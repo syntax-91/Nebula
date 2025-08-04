@@ -1,0 +1,38 @@
+@use '../../shared/style/main.scss' as g;
+
+.mc {
+    
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.form {
+    
+    
+    h2, p {
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .Input {
+        border-radius: g.$radiusDefault;
+        padding: 8px 15px;
+        font-size: 15px;
+    }   
+    
+    .validate-text {
+        color: red;
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+    }   
+}
+

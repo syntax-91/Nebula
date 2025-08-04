@@ -1,0 +1,32 @@
+@use '../../shared/style/main.scss' as g;
+
+.sideBar {
+    height: 90%;
+    border-right: 1px solid g.$borderPrimary;
+    padding: 0px 10px;
+}
+
+.menu {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.el {
+    border-radius: g.$radiusDefault;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0px 20px;
+
+    p {
+        font-size: 18px;
+    }
+
+    &:hover {
+        background-color: g.$hoverColor;
+    }
+
+    &:active {
+        background-color: g.$activeColor;
+    }
+}

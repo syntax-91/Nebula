@@ -1,0 +1,71 @@
+/* fade-in */
+
+.fn {
+    animation: fn 0.3s ease;
+}
+
+@keyframes fn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* top-to-bottom */
+
+.ttb {
+    animation: ttb 0.3s ease;
+}
+
+@keyframes ttb {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* up */
+
+.up {
+    animation: up 0.3s ease;
+}
+
+@keyframes up {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* bottom-to-top */
+
+.rtl {
+    animation: rtl 0.3s ease;
+}
+
+@keyframes rtl {
+    0% {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}

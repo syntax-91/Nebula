@@ -1,0 +1,136 @@
+@use '../../shared/style/main.scss' as g;
+
+/* addPost */
+
+.addPost {
+    
+    width: 100%;
+    
+    display: flex;
+    flex-wrap: wrap;
+    
+
+    .userdata {
+        
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+
+        .ava {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: rgb(91, 93, 91);
+        }
+    }
+
+    .bottom-block {
+        margin-top: 5px;
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        
+    }
+}
+
+/* Posts */
+
+.posts {
+    margin-top: 30px;
+    border-top: 1px solid g.$borderPrimary;
+    width: 100%;
+    min-height: 100px;
+    
+}
+
+/* Post */
+
+.Post {
+    
+    border: 1px solid g.$borderAccent;
+    padding: 5px 5px; 
+    border-radius: g.$radius;
+    
+    margin: 10px 0px;
+
+    .b1 {
+        display: flex;
+        justify-content: space-between;
+
+        width: 95%;
+        margin: auto;
+        align-items: center;
+
+        .userData {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+
+         .ava {
+              width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background-color: #353232;
+          }
+
+           .username {
+                font-weight: 600;
+                font-size: 13px;
+                margin: 0;
+          }
+        }
+
+        .menuIcon {
+            padding: 5px 10px;
+            border-radius: g.$radiusBase;
+        }
+
+        .menuIcon:hover {
+            background-color: g.$hoverColor;
+        }
+
+        .menuIcon:active {
+            background-color: g.$activeColor;
+        }
+    }
+
+    .menu {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-flow: column;
+
+        margin: 0;
+        margin-left: auto;
+        width: auto;
+        
+        padding: 15px 10px;
+
+        border-radius: g.$radiusBase;
+
+        .el {
+            background-color: g.$mainPrimary;
+            margin-top: 5px;
+
+            &:hover {
+                background-color: g.$hoverColor;
+            }
+
+            &:active {
+                background-color: g.$activeColor;
+            }
+        }
+
+    }
+
+    .content {
+        margin: 0;
+        padding: 5px 10px;
+        word-break: break-all;
+    }
+}

@@ -1,0 +1,36 @@
+$bg: #020202;
+
+$borderPrimary: #202020;
+$borderAccent: #131212;
+
+$color: #aaa5a7;
+$mainPrimary: #34247E;
+
+$radiusDefault: 30px;
+$radius: 20px;
+$radiusNormal: 15px;
+$radiusBase: 10px;
+
+
+$hoverColor: #141313;
+$activeColor: #0c0c0c; 
+
+.cp {
+    cursor: pointer;
+}
+
+
+:root {
+    background-color: $bg;
+    color: $color;
+}
+
+.tochka {
+    width: 3px;
+    height: 3px;
+    background-color: rgb(154, 151, 151);
+}
+
+.bgPrimary {
+    background-color: $mainPrimary;    
+}

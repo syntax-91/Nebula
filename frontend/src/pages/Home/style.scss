@@ -1,0 +1,15 @@
+@use '../../shared/style/main.scss' as global;
+
+
+@media (min-width: 900px) {
+    .Home {
+        display: flex;
+        justify-content: center;
+        
+        padding-top: 20px;
+        width: 80%;
+        height: 100vh;
+        margin: auto;
+        display: flex;
+    }
+}
