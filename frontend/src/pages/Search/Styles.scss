@@ -1,0 +1,31 @@
+@use '../../shared/style/main.scss' as g;
+
+// Desktop
+@media (min-width: 700px) {
+    .headerSearch {
+        width: 80%;
+    }
+}
+
+// mobile
+@media (max-width: 700px) {
+    .headerSearch {
+        width: 95%;
+    }
+}
+
+
+.headerSearch {
+    border-bottom: 1px solid g.$borderPrimary;
+    margin: auto;
+
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    
+    input {
+        border-radius: g.$radiusDefault;
+        margin: auto;
+    }
+}

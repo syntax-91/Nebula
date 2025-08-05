@@ -5,9 +5,10 @@ import './style.scss'
 import { userStore } from '../../app/store/user/userStore'
 import { useNavigate } from 'react-router-dom'
 import { Main } from '../../components/main/Main'
-import { socket } from '../../app/socketIo'
 import { Modal } from '../../components/modal/modal'
 import { modalStore } from '../../app/store/modalStore'
+import { useMediaQuery } from 'react-responsive'
+import MenuPhone from '../../components/menuPhone/menuPhone'
 
 
 export default function HomePage(){
@@ -15,21 +16,21 @@ export default function HomePage(){
     const n = useNavigate();
 
     useEffect(() => {
-        socket.emit('hui', 'hui')
-    }, [])
-
-    useEffect(() => {
         if(!userStore.isAuth){
+            console.log('isAuth >> ', userStore.isAuth)
             n(`/login`)
         }
     }, [])
 
+    const isM = useMediaQuery({maxWidth: 700})
+
     return (
         <div className='layOut'>
             <div className="Home">
-                <SideBar />
+                {!isM && <SideBar />}
                 <Main />
-                <RightBar />
+                {isM && <MenuPhone />}
+                {!isM && <RightBar />}
             </div>
 
             {modalStore.isOpenModal && 

@@ -10,6 +10,7 @@ export async function addUserService(data) {
             } 
         });
 
+
         if(res?.username === data.username){
             return {
                 success: false,

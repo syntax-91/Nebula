@@ -1,7 +1,7 @@
 @use '../../shared/style/main.scss' as g;
 
 .sideBar {
-    height: 90%;
+    height: 100%;
     border-right: 1px solid g.$borderPrimary;
     padding: 0px 10px;
 }
@@ -15,6 +15,7 @@
     border-radius: g.$radiusDefault;
     display: flex;
     align-items: center;
+    margin-top: 2px;
     gap: 15px;
     padding: 0px 20px;
 

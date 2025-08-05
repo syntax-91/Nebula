@@ -5,6 +5,7 @@ import App from './app/App.tsx'
 import './shared/style/main.scss'
 import './shared/style/animations.css'
 import './shared/style/transitions.css'
+import './shared/style/globalStyles.css'
 
 createRoot(document.getElementById('root')!).render(
   

@@ -10,8 +10,6 @@ import { modalStore } from '../../../app/store/modalStore'
 import { Modal } from '../../../components/modal/modal'
 import { observer } from 'mobx-react-lite'
 
-
-
  function LoginPage(){
 
     const n = useNavigate();

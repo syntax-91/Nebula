@@ -1,6 +1,15 @@
-.main {
-    width: 500px;
-    margin: 10px;
+@media (min-width: 700px) {
+    .main {
+        width: 550px;
+        margin: 10px;
+        overflow-y: auto;
+    }
+}
 
-    overflow-y: auto;
+@media (max-width: 700px) {
+    .main {
+        width: 95%;
+        margin: auto;
+        overflow-y: auto;
+    }
 }

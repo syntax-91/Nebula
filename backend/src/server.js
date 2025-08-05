@@ -5,6 +5,7 @@ import { PostRouter } from './routes/post.route.js';
 import { Server } from 'socket.io'
 import {createServer} from 'http'
 import { Socket } from './service/socket/socketService.js';
+import { QueryRouter } from './routes/query.route.js';
 
 const app = express()
 const PORT = 3000;
@@ -35,6 +36,8 @@ app.use(
 app.use('/auth', AuthRouter)
 
 app.use('/post', PostRouter)
+
+app.use('/query', QueryRouter)
 
 const run = async() => {
     

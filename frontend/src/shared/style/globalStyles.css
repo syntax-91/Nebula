@@ -1,0 +1,14 @@
+.block {
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block:hover {
+    opacity: 0.8;
+}
+
+.block:active {
+    opacity: 0.5;
+}

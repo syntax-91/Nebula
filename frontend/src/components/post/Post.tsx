@@ -31,7 +31,7 @@ import { postStore } from "../../app/store/post/postStore";
     }
 
     return(
-        <div className="Post cp ">
+        <div className="Post cp ttb">
            <div className="b1">
                 <div className="userData">
                     <div className="ava"></div>
