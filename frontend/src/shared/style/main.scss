@@ -2,17 +2,19 @@ $bg: #020202;
 
 $borderPrimary: #202020;
 $borderAccent: #131212;
+$hoverColorBorder: #201f1f;
 
 $color: #aaa5a7;
 $mainPrimary: #34247E;
 
-$radiusDefault: 30px;
-$radius: 20px;
-$radiusNormal: 15px;
-$radiusBase: 10px;
+$radius: 10px;
+$radius_sm: 15px;
+$radius_md: 30px; // **def
+$radius_lg: 50px;
+ 
 
 
-$hoverColor: #141313;
+$hoverColor: #151414;
 $activeColor: #0c0c0c; 
 
 .cp {

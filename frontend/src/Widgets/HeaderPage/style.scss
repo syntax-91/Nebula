@@ -1,0 +1,22 @@
+@use '../../shared/style/main.scss' as g;
+
+header {
+    border-bottom: 1px solid g.$borderPrimary;
+    margin: auto;
+
+    padding: 19px;
+
+    display: flex;
+    align-items: center;
+    
+    .children {
+        border-radius: g.$radius_md;
+        margin: auto;
+
+        * {
+            border-radius: g.$radius_md;
+            margin: 0;
+            
+        }
+    }
+}

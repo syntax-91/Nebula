@@ -16,6 +16,23 @@
     }
 }
 
+/* fade-out */
+
+.fo {
+    animation: fo 0.3s ease;
+}
+
+@keyframes fo {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
 /* top-to-bottom */
 
 .ttb {

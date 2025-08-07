@@ -50,6 +50,16 @@ export function AppRouter(){
                 }
                 />
 
+                {/* User */}
+                <Route 
+                path={routesConfig.user.path} 
+                element={
+                    <Suspense fallback={<p>загрузка</p>}>
+                        <routesConfig.user.component/>
+                    </Suspense>
+                }
+                />
+
             </Routes>
         </BrowserRouter>
     )

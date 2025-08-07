@@ -4,7 +4,7 @@ import { SideBar } from '../../components/sideBar/sideBar'
 import './style.scss'
 import { userStore } from '../../app/store/user/userStore'
 import { useNavigate } from 'react-router-dom'
-import { Main } from '../../components/main/Main'
+import  Main  from '../../components/main/Main'
 import { Modal } from '../../components/modal/modal'
 import { modalStore } from '../../app/store/modalStore'
 import { useMediaQuery } from 'react-responsive'
@@ -17,7 +17,6 @@ export default function HomePage(){
 
     useEffect(() => {
         if(!userStore.isAuth){
-            console.log('isAuth >> ', userStore.isAuth)
             n(`/login`)
         }
     }, [])

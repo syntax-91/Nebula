@@ -1,8 +1,11 @@
+import { HeaderPage } from "../../Widgets/HeaderPage/HeaderPage";
+
  export default function SettingsPage(){
 
     return(
         <div>
-            <h1>Settings</h1>
+            <HeaderPage 
+            ch={<h2>Settings</h2>}/>
         </div>
     )
 }

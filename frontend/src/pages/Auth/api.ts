@@ -6,7 +6,6 @@ import { modalStore } from "../../app/store/modalStore"
 
 export async function LoginAPI(data:IUserdataAuth, n:NavigateFunction){
     try {
-        console.log('***', data)
         const res = await axios.post('http://localhost:3000/auth/login', data)
 
        console.info('ответ >> ', res.data);
@@ -26,7 +25,6 @@ export async function LoginAPI(data:IUserdataAuth, n:NavigateFunction){
 
 export async function RegisterAPI(data:IUserdataAuth, n:NavigateFunction){
     try {
-        console.log('***', data)
         const res = await axios.post('http://localhost:3000/auth/register', data);
 
         console.info('ответ >> ', res.data)

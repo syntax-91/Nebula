@@ -1,18 +1,24 @@
 @use '../../shared/style/main.scss' as g;
 
-.modal {
+.modalC {
+    width: 100%;
     position: fixed;
+    left: 0;
     bottom: 30px;
+}
 
+.modal {
     border: 1px solid g.$borderPrimary;
     padding: 0px 20px;
+
+    background-color: g.$bg;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
 
-    border-radius: g.$radiusDefault;
+    border-radius: g.$radius_md;
 
     .close:hover {
         opacity: 0.8;

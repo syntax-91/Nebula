@@ -7,7 +7,7 @@ export interface IUserdataAuth {
 export interface IPosts {
     ownerUsername: string,
     text: string
-
+    isLiked?:boolean
     id: number
 }
 

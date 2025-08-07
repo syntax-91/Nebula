@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import './styles.scss'
 import { socket } from '../../app/socketIo'
 import type { IPosts } from '../../shared/types/types'
-import { postsAPI } from './api'
+import {  postsAPI } from './api'
 import { postStore } from '../../app/store/post/postStore'
 import { observer } from 'mobx-react-lite'
 import  Post  from './Post'
@@ -25,6 +25,7 @@ import  Post  from './Post'
      
     useEffect(() => {
         postsAPI()
+        postStore.FetchLikedPosts()
     }, [])
 
     useEffect(() => {
@@ -39,6 +40,7 @@ import  Post  from './Post'
                     id={post.id}
                     ownerUsername={post.ownerUsername} 
                     text={post.text} 
+                    isLiked={postStore.likedPosts.some(e => e.id === post.id)}
                     />
                 </div>
             ))} 

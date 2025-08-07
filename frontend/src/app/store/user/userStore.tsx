@@ -1,12 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import cs from 'js-cookie'
 
+
+
 class UserStore {
 
     isAuth = Boolean(cs.get('isAuth_Nebula'));
 
     dataMap = {
-        username: cs.get('username_Nebula')
+        username: cs.get('username_Nebula'),
     }
 
     setIsAuth(v:boolean){

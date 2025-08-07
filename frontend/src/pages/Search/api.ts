@@ -3,7 +3,7 @@ import axios from "axios"
 type TType = 'user'|'post'|'all'
 
 export async function QueryAPI(query: string, type:TType) {
-    try {
+    try { 
          const res = await axios.get(`http://localhost:3000/query/${query}/${type}`)
 
          console.info('ответ от сервера >> ', res.data)

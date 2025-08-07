@@ -2,6 +2,7 @@ import { Router } from "express";
 import { addPostService } from "../service/post/addPostService.js";
 import { lastPostsService } from "../service/post/lastPostsService.js";
 import { deletePostService } from "../service/post/deletePostService.js";
+import { likedPostsService, likeService } from "../service/post/likeService.js";
 
 export const PostRouter = Router()
 
@@ -43,6 +44,38 @@ PostRouter.post('/deletePost', (req, res) => {
         res.json({
             success: post.success,
             msg: post.msg
+        })
+    })
+})
+
+// post/like
+PostRouter.post('/like', (req, res) => {
+    const data = req.body
+
+    console.log('запрос на post/liked - data >> ', data)
+
+    likeService(data)
+    .then(post => {
+        res.json({
+            success: post.success,
+            msg: post.msg
+        })
+    })
+})
+
+
+// post/likedPosts
+PostRouter.get('/likedPosts/:username', (req, res) => {
+    const { username }  = req.params;
+
+    console.log('запрос на post/likedPosts - data >> ', username)
+
+    likedPostsService(username)
+    .then(posts => {
+        res.json({
+            success: posts.success,
+            msg: posts.msg,
+            res: posts.res
         })
     })
 })
