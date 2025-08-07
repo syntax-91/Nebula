@@ -4,7 +4,7 @@ import axios from "axios";
 import { userStore } from "../user/userStore";
 
 interface ILikedPosts {
-    id: number
+    postId: number
 }
 
 class PostStoreClass {

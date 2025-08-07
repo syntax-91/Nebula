@@ -8,8 +8,22 @@ export function AppRouter(){
     return (
         <BrowserRouter>
             <Routes>
-                {/* Home */}
-                <Route path={routesConfig.home.path} element={<Home />} />
+                {/* Layout */}
+                <Route path={routesConfig.layout.path} 
+                 >
+
+                    <Route index element={<Home />} />
+
+                    {/* Noti */}
+                    <Route 
+                        path={routesConfig.layout.outlets.notifications.path} 
+                        element={
+                        <Suspense fallback={<p>загрузка</p>}>
+                            <routesConfig.layout.outlets.notifications.component/>
+                        </Suspense>
+                    }
+                    />
+                 </Route>
                 
                 {/* lazyRoutes */}
                 {lazyRoutesConfig.map((e,idx) => (
@@ -26,16 +40,6 @@ export function AppRouter(){
                 element={
                     <Suspense fallback={<p>загрузка</p>}>
                         <routesConfig.search.component/>
-                    </Suspense>
-                }
-                />
-
-                {/* Noti */}
-                <Route 
-                path={routesConfig.notifications.path} 
-                element={
-                    <Suspense fallback={<p>загрузка</p>}>
-                        <routesConfig.notifications.component/>
                     </Suspense>
                 }
                 />

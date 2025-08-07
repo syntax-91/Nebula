@@ -16,6 +16,7 @@ export async function postsAPI(){
 
 export async function deletePostAPI(id:number){
     try {
+
         const res = await axios.post('http://localhost:3000/post/deletePost', {postId: id});
        return res.data.success
 
@@ -27,10 +28,13 @@ export async function deletePostAPI(id:number){
 
 export async function likePostAPI(id:number, type:'liked'|'unlike'){
     try {
-        
+        console.log('handleLike - deletePostAPI ')
+
         const res = await axios.post('http://localhost:3000/post/like', 
             {postId: id, username:userStore.dataMap.username, type:type}
         );
+
+        console.log('res >> ', res.data)
         
         console.info(res.data)
         return res.data.success

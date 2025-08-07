@@ -14,10 +14,14 @@ export const lazyRoutesConfig = [
 ]
 
 export const routesConfig = {
-    home: { path: '/' },
+    layout: { path: '/',
+        outlets: {
+            notifications: { path: 'noti', component: NotiLazy },
+        }
+     },
 
     search: { path: 'search', component: SearchLazy },
-    notifications: { path: 'noti', component: NotiLazy },
+    
     settings: { path: 'settings', component: SettingsLazy },
     user: { path: 'u/:username', component: UserPageLazy }
 }

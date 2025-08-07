@@ -24,8 +24,8 @@ import  Post  from './Post'
     }, [])
      
     useEffect(() => {
-        postsAPI()
         postStore.FetchLikedPosts()
+        postsAPI()
     }, [])
 
     useEffect(() => {
@@ -39,7 +39,7 @@ import  Post  from './Post'
                     <Post 
                     id={post.id}
                     ownerUsername={post.ownerUsername} 
-                    text={post.text} 
+                     text={post.text} 
                     isLiked={postStore.likedPosts.some(e => e.id === post.id)}
                     />
                 </div>

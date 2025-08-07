@@ -17,6 +17,11 @@ import { BiLike, BiSolidLike } from "react-icons/bi";
     const [isClosingMenu, setIsClosingMenu] = useState(false)
     const [isLiked, setIsLiked] = useState(false)
 
+    useEffect(() => {
+        const isLikedPost = postStore.likedPosts.some(post => post.postId === rest.id)
+        setIsLiked(isLikedPost)
+    }, [postStore.likedPosts])
+
     const toggleIsOpenMenu = () => {
         if(isOpenMenu == true){
             setIsClosingMenu(true)
@@ -31,8 +36,7 @@ import { BiLike, BiSolidLike } from "react-icons/bi";
     }
 
     const handleDeletePost = () => {
-        console.log('handleDeletePost - value >> ', rest.id)
-         
+
         deletePostAPI(rest.id)
         .then(success => {
             if(success == true) {
@@ -48,11 +52,17 @@ import { BiLike, BiSolidLike } from "react-icons/bi";
     }
 
     const handleLike = () => {
-        setIsLiked(true)
+        likePostAPI(rest.id, 'liked')
+        .then(e => {
+            setIsLiked(e)
+        })
     }
 
     const handleUnLike = () => {
-        setIsLiked(false)
+        likePostAPI(rest.id, 'unlike')
+        .then(e => {
+            if(e) setIsLiked(false)
+        })
     }
 
 
@@ -69,7 +79,7 @@ import { BiLike, BiSolidLike } from "react-icons/bi";
                 onClick={toggleIsOpenMenu}
                 className="menuIcon tr3">
                     <IoIosMore />
-                </div>
+                </div> 
            </div>
 
            {isOpenMenu == true && 
@@ -98,8 +108,8 @@ import { BiLike, BiSolidLike } from "react-icons/bi";
             <p className="content">{text}</p>
 
             <div className="actions">
-                {!isLiked && <BiLike color="#444" onClick={handleLike} />}
-                {isLiked && <BiSolidLike color="#fff" onClick={handleUnLike} />}
+                {!isLiked && <BiLike className="like" color="#444" onClick={handleLike} />}
+                {isLiked  && <BiSolidLike className="like" color="#d9d8d8" onClick={handleUnLike} />}
             </div>
 
         </div>
