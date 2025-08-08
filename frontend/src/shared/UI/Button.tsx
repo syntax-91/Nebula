@@ -4,7 +4,8 @@ interface props {
     loading?: boolean,
     disabled?: boolean,
     type?: 'submit'|'reset'|'button',
-    onClick?: () => void
+    onClick?: () => void,
+    className?: string
 }
 
 export function Button({
@@ -12,7 +13,8 @@ export function Button({
     bg = 'bgPrimary',
     disabled,
     type = 'button',
-    onClick
+    onClick,
+    className
 }:props){
 
     return (
@@ -20,7 +22,7 @@ export function Button({
         onClick={onClick}
         type={type}
         disabled={disabled}
-        className={`Button cp ${bg}`}>
+        className={`Button ${className} el cp ${bg}`}>
             {label}
         </button>
     )

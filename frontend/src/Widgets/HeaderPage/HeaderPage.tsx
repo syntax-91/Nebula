@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import type { ReactNode } from 'react'
 
 interface props {
+    isBack?: boolean
     ch:ReactNode
 }
 
-export function HeaderPage({ch}:props){
+export function HeaderPage({ch, isBack=false}:props){
 
     const n = useNavigate()
 
@@ -19,10 +20,11 @@ export function HeaderPage({ch}:props){
     return (
     <header className="headerSearch ttb">
 
+        {isBack && 
         <div onClick={handleBack} className="cp block back">
             <IoChevronBack />
             <span>Назад</span>
-        </div>
+        </div>}
 
         <div className="children">
             {ch}

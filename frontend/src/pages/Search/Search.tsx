@@ -5,6 +5,7 @@ import { useDebounce } from '../../shared/utils/hooks/useDebounce';
 import { QueryAPI } from './api';
 import { HeaderPage } from '../../Widgets/HeaderPage/HeaderPage';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from '../../shared/UI/Loader';
 
 interface IRes {
     username: string,
@@ -45,6 +46,8 @@ export default function SearchPage(){
                 />
            }
            />
+
+           
 
             <div className='resContainer'>
 

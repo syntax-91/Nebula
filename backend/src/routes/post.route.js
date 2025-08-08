@@ -43,7 +43,7 @@ PostRouter.post('/deletePost', (req, res) => {
     deletePostService(postId)
     .then(post => {
         res.json({
-            success: post.success,
+            success: post.success, 
             msg: post.msg
         })
     })

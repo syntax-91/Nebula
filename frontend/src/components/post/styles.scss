@@ -39,7 +39,7 @@
 
 .posts {
     margin-top: 30px;
-    border-top: 1px solid g.$borderPrimary;
+    border-top: 1px solid g.$borderAccent;
     width: 100%;
     min-height: 100px;
     
@@ -117,17 +117,21 @@
 
         border-radius: g.$radius;
 
-        .el {
+        .menuEl {
+            width: auto;
             background-color: g.$mainPrimary;
             margin-top: 5px;
+            padding: 10px 15px;
 
             &:hover {
                 background-color: g.$hoverColor;
+                border: 1px solid g.$borderPrimary;
             }
 
             &:active {
                 background-color: g.$activeColor;
             }
+           
         }
 
     }
@@ -141,7 +145,7 @@
     .actions {
         width: 100%;
         height: 40px;
-
+        
         display: flex;
         align-items: center;
         justify-content: end;

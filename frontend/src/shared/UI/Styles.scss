@@ -13,7 +13,10 @@
 
 .textarea {
     max-width: 100%;
-    border: 1px solid g.$borderPrimary;
+    
+    border: 1px solid g.$borderAccent;
+    border-radius: g.$radius;
+
     outline: 0;
     background: none;
     resize: none;
@@ -29,6 +32,10 @@
     border: 0;
     border-radius: g.$radius_md;
     margin-top: 5px; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Button:hover {
@@ -46,4 +53,24 @@
 .bgNone {
     background: none;
     border: 1px solid g.$borderPrimary;
+}
+
+/* loader */
+
+.loaderC {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+   
+    .loaderEl {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+
+        border-top: 2px solid g.$mainPrimary;
+        border-right: 2px solid g.$borderAccent;
+        border-bottom: 2px solid g.$borderAccent;
+        border-left: 2px solid g.$borderAccent;
+        
+    }
 }

@@ -86,3 +86,14 @@
         opacity: 1;
     }
 }
+
+/* rotate 360 infinine */
+
+.r360_inf {
+    animation: r360_inf 0.5s linear infinite;
+}
+
+@keyframes r360_inf {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

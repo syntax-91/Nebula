@@ -38,11 +38,14 @@ export function AddPost(){
             h={70}
             />
 
+            
             <div className='bottom-block'>
                 <Button 
+                disabled={!text.trim()}
+                className='fn'
                 onClick={handleAddPost}
                 label='add' 
-                disabled={!text.trim()} />
+                />
             </div>
 
         </div>

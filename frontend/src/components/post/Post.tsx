@@ -11,6 +11,7 @@ import { modalStore } from "../../app/store/modalStore";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import { IoHeartDislikeOutline } from "react-icons/io5";
 import { AiFillDislike, AiOutlineDislike } from "react-icons/ai";
+import { Button } from "../../shared/UI/Button";
 
  function Post({ ownerUsername, text, ...rest }:IPosts){
 
@@ -116,25 +117,25 @@ import { AiFillDislike, AiOutlineDislike } from "react-icons/ai";
                 </div> 
            </div>
 
+            {/* menu */}
            {isOpenMenu == true && 
             <div className={`menu tr3 ${isClosingMenu == true ? "fo btt" : "fn"}`}>
 
-                <div className="el tr">
-                     пожаловаться
-                </div>
+                <Button label="пожаловаться" className="el menuEl tr"/>
+        
 
-                <div 
+                <Button 
                 onClick={handleCopyLink}
-                className="el tr">
-                   скопировать ссылку 
-                </div>
+                label="скопировать ссылку"
+                className="el tr menuEl" />
+                   
+                
 
                 {ownerUsername == userStore.dataMap.username && (
-                    <div 
+                    <Button 
                     onClick={handleDeletePost}
-                    className="el tr">
-                        удалить
-                    </div>
+                    label="удалить"
+                    className="el tr menuEl" />
                 )}
 
             </div>}

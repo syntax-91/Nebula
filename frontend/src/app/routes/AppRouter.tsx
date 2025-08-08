@@ -3,6 +3,7 @@ import { lazyRoutesConfig, routesConfig } from "../config/routesConfig";
 import Home from "../../pages/Home/Home";
 import { Suspense } from "react";
 import Main from "../../components/main/Main";
+import { Loader } from "../../shared/UI/Loader";
 
 export function AppRouter(){
 
@@ -18,7 +19,7 @@ export function AppRouter(){
                     <Route 
                         path={routesConfig.home.outlets.notifications.path} 
                         element={
-                        <Suspense fallback={<p>загрузка</p>}>
+                        <Suspense fallback={<Loader />}>
                             <routesConfig.home.outlets.notifications.component/>
                         </Suspense>
                     }
@@ -28,7 +29,7 @@ export function AppRouter(){
                     <Route 
                         path={routesConfig.home.outlets.search.path} 
                         element={
-                        <Suspense fallback={<p>загрузка</p>}>
+                        <Suspense fallback={<Loader />}>
                             <routesConfig.home.outlets.search.component/>
                         </Suspense>
                     }

@@ -2,32 +2,17 @@
 
 .sideBar {
     height: 100%;
-    border-right: 1px solid g.$borderPrimary;
+    border-right: 1px outset g.$borderPrimary;
     padding: 0px 10px;
 }
 
 .menu {
     margin-top: 40px;
     width: 100%;
-}
 
-.el {
-    border-radius: g.$radius_md;
-    display: flex;
-    align-items: center;
-    margin-top: 2px;
-    gap: 15px;
-    padding: 0px 20px;
-
-    p {
-        font-size: 18px;
-    }
-
-    &:hover {
-        background-color: g.$hoverColor;
-    }
-
-    &:active {
-        background-color: g.$activeColor;
+    .sideBarEl {
+        transition: all 0.3s ease;
+        padding: 0px 15px;
     }
 }
+ 

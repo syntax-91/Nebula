@@ -9,7 +9,8 @@ export default function UserPage(){
  
     return (
         <div className="userPage">
-            <HeaderPage ch={<h2>{username}</h2>} />            
+            <HeaderPage isBack={true} 
+            ch={<h2>{username}</h2>} />            
             
             <div className="center cardContainer">
                 <UserCard username={username||''} />

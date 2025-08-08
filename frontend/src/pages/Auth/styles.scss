@@ -24,10 +24,18 @@
 
     .Input {
         border-radius: g.$radius_md;
-        padding: 8px 15px;
+        padding: 0px 15px;
         font-size: 15px;
     }   
     
+    .btn {
+        margin-top: 8px;
+    }
+
+    .toPageReg, .toPageLog {
+        background-color: rgb(14, 14, 14);
+    }
+ 
     .validate-text {
         color: red;
         margin: 0;

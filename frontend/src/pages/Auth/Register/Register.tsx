@@ -7,7 +7,7 @@ import { RegisterAPI } from "../api";
 import { modalStore } from "../../../app/store/modalStore";
 import { Modal } from "../../../components/modal/modal";
 import { observer } from "mobx-react-lite";
-
+import "../styles.scss";
 
 
  function RegisterPage(){
@@ -55,6 +55,7 @@ import { observer } from "mobx-react-lite";
                 <Button  
                 type='submit'  
                 label='регистрация'
+                className="btn"
                 />
 
                 <p>или</p>
@@ -62,6 +63,7 @@ import { observer } from "mobx-react-lite";
                 <Button 
                 label='Вход'
                 bg='bgNone'
+                className="toPageLog"
                 onClick={handleLogin}
                 />
 

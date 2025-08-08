@@ -53,7 +53,8 @@ import { observer } from 'mobx-react-lite'
                 </div>
 
                 <Button  
-                type='submit'  
+                type='submit'
+                className='btn'  
                 label='вход'
                 />
 
@@ -62,6 +63,7 @@ import { observer } from 'mobx-react-lite'
                 <Button 
                 label='Регистрация'
                 bg='bgNone'
+                className='btn toPageReg'
                 onClick={handleReg}
                 />
 
