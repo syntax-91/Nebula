@@ -11,6 +11,7 @@ class PostStoreClass {
     
     posts:IPosts[] = []
     likedPosts:ILikedPosts[] = [];
+    dislikedPosts:ILikedPosts[] = [];
 
 
     constructor() {
@@ -31,6 +32,20 @@ class PostStoreClass {
         this.likedPosts.filter((post) => post.id !== id)
     }
 
+    ////
+    setDislikedPosts(posts:ILikedPosts[]){
+        console.log('likedPosts >> ', posts)
+        this.dislikedPosts = posts
+    }
+
+    setDislikedPost(id:number){
+        this.dislikedPosts.push({postId: id})
+    }
+
+    setUnDislikedPost(id:number){
+        this.dislikedPosts.filter((post) => post.postId !== id)
+    }
+
     async FetchLikedPosts(){
          try {
         
@@ -38,6 +53,19 @@ class PostStoreClass {
             this.setLikedPosts(res.data.res)
         
             console.info('likedPostsAPI >> ', res.data)
+    
+        } catch(err){
+            console.error('ERROR - api.ts - func likedPosts, err > ', err)
+        }
+    }
+
+    async FetchDislikedPosts(){
+         try {
+        
+            const res = await axios.get(`http://localhost:3000/post/dislikedPosts/${userStore.dataMap.username}`);
+            this.setDislikedPosts(res.data.res)
+        
+            console.info('dislikedPostsAPI >> ', res.data)
     
         } catch(err){
             console.error('ERROR - api.ts - func likedPosts, err > ', err)

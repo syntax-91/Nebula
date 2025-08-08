@@ -25,6 +25,7 @@ import  Post  from './Post'
      
     useEffect(() => {
         postStore.FetchLikedPosts()
+        postStore.FetchDislikedPosts()
         postsAPI()
     }, [])
 
@@ -37,10 +38,13 @@ import  Post  from './Post'
             {postStore.posts.map(post => (
                 <div key={post.id}>
                     <Post 
+                    _count={{
+                        likedBy: post._count?.likedBy || 0,
+                        dislikedBy: post._count?.dislikedBy || 0,
+                    }}
                     id={post.id}
                     ownerUsername={post.ownerUsername} 
                      text={post.text} 
-                    isLiked={postStore.likedPosts.some(e => e.id === post.id)}
                     />
                 </div>
             ))} 

@@ -23,6 +23,7 @@ model User {
   ava String
 
   likedPosts LikedPost[]
+  dislikedPosts DislikedPost[]
 
   following Follow[] @relation("Following") // Те, на кого подписаны МЫ
   followers Follow[] @relation("Followers") // Те, кто подписан на НАС
@@ -49,6 +50,7 @@ model Post {
   owner User? @relation(fields: [ownerUsername], references: [username])
 
   likedBy LikedPost[]
+  dislikedBy DislikedPost[]
 
   text String
   createdAt DateTime @default(now())
@@ -56,6 +58,19 @@ model Post {
 }
 
 model LikedPost {
+
+  // перепиши потом на userId
+  username String 
+  postId Int 
+
+  user User @relation(fields: [username], references: [username])
+  post Post @relation(fields: [postId], references: [id])
+
+  @@id([username,postId])
+}
+
+
+model DislikedPost {
 
   // перепиши потом на userId
   username String 

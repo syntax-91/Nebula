@@ -44,3 +44,23 @@ export async function likePostAPI(id:number, type:'liked'|'unlike'){
         console.error('ERROR - api.ts - func addPostAPI, err > ', err)
     }
 }
+
+
+export async function dislikePostAPI(id:number, type:'disliked'|'unDislike'){
+    try {
+        console.log('handleDislike ')
+
+        const res = await axios.post('http://localhost:3000/post/dislike', 
+            {postId: id, username:userStore.dataMap.username, type:type}
+        );
+
+        console.log('res >> ', res.data)
+        
+        console.info(res.data)
+        return res.data.success
+        
+    
+    } catch(err){
+        console.error('ERROR - api.ts - func addPostAPI, err > ', err)
+    }
+}

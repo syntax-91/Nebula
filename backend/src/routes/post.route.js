@@ -3,6 +3,7 @@ import { addPostService } from "../service/post/addPostService.js";
 import { lastPostsService } from "../service/post/lastPostsService.js";
 import { deletePostService } from "../service/post/deletePostService.js";
 import { likedPostsService, likeService } from "../service/post/likeService.js";
+import { dislikedPostsService, dislikeService } from "../service/post/dislikeService.js";
 
 export const PostRouter = Router()
 
@@ -64,6 +65,22 @@ PostRouter.post('/like', (req, res) => {
 })
 
 
+// post/dislike
+PostRouter.post('/dislike', (req, res) => {
+    const data = req.body
+
+    console.log('запрос на post/disliked - data >> ', data)
+
+    dislikeService(data)
+    .then(post => {
+        res.json({
+            success: post.success,
+            msg: post.msg
+        })
+    })
+})
+
+
 // post/likedPosts
 PostRouter.get('/likedPosts/:username', (req, res) => {
     const { username }  = req.params;
@@ -71,6 +88,23 @@ PostRouter.get('/likedPosts/:username', (req, res) => {
     console.log('запрос на post/likedPosts - data >> ', username)
 
     likedPostsService(username)
+    .then(posts => {
+        res.json({
+            success: posts.success,
+            msg: posts.msg,
+            res: posts.res
+        })
+    })
+})
+
+
+// post/dislikedPosts
+PostRouter.get('/dislikedPosts/:username', (req, res) => {
+    const { username }  = req.params;
+
+    console.log('запрос на post/likedPosts - data >> ', username)
+
+    dislikedPostsService(username)
     .then(posts => {
         res.json({
             success: posts.success,

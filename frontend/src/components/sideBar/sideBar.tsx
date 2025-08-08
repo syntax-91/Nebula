@@ -1,9 +1,10 @@
 import { GoHome, GoHomeFill } from 'react-icons/go'
 import { CiLogout, CiSearch, CiSettings } from 'react-icons/ci'
-import {  IoIosNotificationsOutline } from 'react-icons/io'
+import {  IoIosNotifications, IoIosNotificationsOutline } from 'react-icons/io'
 import './style.scss'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { logOutU } from '../../shared/utils/logout'
+import { IoSearchCircle } from 'react-icons/io5'
 
 export function SideBar(){
     
@@ -29,7 +30,7 @@ export function SideBar(){
                 <div 
                 onClick={()=>handleNavigate('search')}
                 className='el cp'>
-                    <CiSearch size={30} />
+                    {l.pathname == '/search' ? <IoSearchCircle size={30} />:<CiSearch size={30} />}
                     <p>Search</p>
                 </div>
 
@@ -37,7 +38,7 @@ export function SideBar(){
                 <div 
                 onClick={()=>handleNavigate('noti')}
                 className='el cp'>
-                    <IoIosNotificationsOutline size={30} />
+                    {l.pathname == '/noti' ? <IoIosNotifications size={30} />:<IoIosNotificationsOutline size={30} />}
                     <p>Notifications</p>
                 </div>
 

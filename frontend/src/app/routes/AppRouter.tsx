@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazyRoutesConfig, routesConfig } from "../config/routesConfig";
 import Home from "../../pages/Home/Home";
 import { Suspense } from "react";
+import Main from "../../components/main/Main";
 
 export function AppRouter(){
 
@@ -9,20 +10,30 @@ export function AppRouter(){
         <BrowserRouter>
             <Routes>
                 {/* Layout */}
-                <Route path={routesConfig.layout.path} 
-                 >
+                <Route path={routesConfig.home.path} element={<Home />} >
 
-                    <Route index element={<Home />} />
+                    <Route index element={<Main />} />
 
                     {/* Noti */}
                     <Route 
-                        path={routesConfig.layout.outlets.notifications.path} 
+                        path={routesConfig.home.outlets.notifications.path} 
                         element={
                         <Suspense fallback={<p>загрузка</p>}>
-                            <routesConfig.layout.outlets.notifications.component/>
+                            <routesConfig.home.outlets.notifications.component/>
                         </Suspense>
                     }
                     />
+
+                    {/* Search*/}
+                    <Route 
+                        path={routesConfig.home.outlets.search.path} 
+                        element={
+                        <Suspense fallback={<p>загрузка</p>}>
+                            <routesConfig.home.outlets.search.component/>
+                        </Suspense>
+                    }
+                    />
+
                  </Route>
                 
                 {/* lazyRoutes */}
@@ -34,15 +45,6 @@ export function AppRouter(){
                     />
                 ))}
 
-                {/* Search */}
-                <Route 
-                path={routesConfig.search.path} 
-                element={
-                    <Suspense fallback={<p>загрузка</p>}>
-                        <routesConfig.search.component/>
-                    </Suspense>
-                }
-                />
 
                 {/* Settings */}
                 <Route 

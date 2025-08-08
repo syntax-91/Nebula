@@ -6,8 +6,20 @@ export async function lastPostsService() {
             take: 20, // лимит
             orderBy: {
                 createdAt: 'desc' // desc - самые новые вервыми
+            },
+            select: { 
+                id: true,
+                likedBy: true,
+                text: true,
+                ownerUsername: true,
+                createdAt:  true,
+
+                _count: { select:{
+                    likedBy: true,
+                    dislikedBy: true
+                } }
             }
-        })
+        }) 
 
         return res
 
