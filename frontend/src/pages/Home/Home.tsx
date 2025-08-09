@@ -20,6 +20,8 @@ export default function HomePage(){
         }
     }, [])
 
+    
+
     const isM = useMediaQuery({maxWidth: 700})
 
     return (

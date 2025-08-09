@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, reaction } from "mobx";
 import type { IPosts } from "../../../shared/types/types";
 import axios from "axios";
 import { userStore } from "../user/userStore";
@@ -12,10 +12,18 @@ class PostStoreClass {
     posts:IPosts[] = []
     likedPosts:ILikedPosts[] = [];
     dislikedPosts:ILikedPosts[] = [];
+    lastPostId = 0
 
 
     constructor() {
         makeAutoObservable(this)    
+
+        reaction(
+            () => this.posts.length,
+            () => {
+                console.log('postsLength >> ', this.posts.length)
+            }
+        )
     }
 
      setLikedPosts(posts:ILikedPosts[]){
@@ -25,7 +33,7 @@ class PostStoreClass {
     }
 
     setLikedPost(id:number){
-        this.likedPosts.push({id: id})
+        this.likedPosts.push({postId: id})
     }
 
     setUnLikedPost(id:number){
@@ -82,9 +90,17 @@ class PostStoreClass {
         this.posts.unshift(data)
     }
 
+    setNewPosts(posts:IPosts[]){
+        posts.map(post => this.posts.push(post) )
+    }
+
     deletePost(id:number){
         this.posts = this.posts.filter(post => post.id !== id)
         console.info('удаление поста!')
+    }
+
+    setLastPostId(id:number){
+        this.lastPostId = id;
     }
 }
 

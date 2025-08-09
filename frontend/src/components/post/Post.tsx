@@ -4,7 +4,7 @@ import './styles.scss'
 import { useEffect, useState } from "react";
 import { userStore } from "../../app/store/user/userStore";
 import { observer } from "mobx-react-lite";
-import { deletePostAPI, dislikePostAPI, likePostAPI} from "./api";
+import { deletePostAPI, dislikePostAPI, likePostAPI, paginationPostsAPI} from "./api";
 import { postStore } from "../../app/store/post/postStore";
 import { modalStore } from "../../app/store/modalStore";
 
@@ -12,6 +12,7 @@ import { BiLike, BiSolidLike } from "react-icons/bi";
 import { IoHeartDislikeOutline } from "react-icons/io5";
 import { AiFillDislike, AiOutlineDislike } from "react-icons/ai";
 import { Button } from "../../shared/UI/Button";
+import { useInView } from "react-intersection-observer";
 
  function Post({ ownerUsername, text, ...rest }:IPosts){
 
@@ -23,6 +24,12 @@ import { Button } from "../../shared/UI/Button";
 
     const [likedByState, setLikedByState] = useState(rest._count?.likedBy || 0)
     const [dislikedByState, setDislikedByState] = useState(rest._count?.dislikedBy || 0)
+
+
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.5
+    });
 
     useEffect(() => {
         const isLikedPost = postStore.likedPosts.some(post => post.postId === rest.id)
@@ -100,9 +107,17 @@ import { Button } from "../../shared/UI/Button";
             }
         })
     }
+
+    //////////
+    useEffect(() => {
+        if(inView && rest.id === postStore.lastPostId){
+            paginationPostsAPI(rest.id, 15)
+        }  
+    }, [inView])
+
     
     return(
-        <div className="Post tr2 cp ttb">
+        <div ref={ref} className="Post tr2 cp ttb">
            <div className="b1">
                 <div className="userData">
                     <div className="ava"></div>

@@ -1,7 +1,7 @@
 @use '../../shared/style/main.scss' as g;
 
 .rightBar {
-    border-left: 1px outset g.$borderPrimary;
+    border-left: 1px outset g.$borderAccent;
     
     width: 300px;
     height: 100%;
@@ -10,7 +10,7 @@
 
     .rightBar_ad {
         
-        border: 1px outset g.$borderAccent;
+        border: 1px outset g.$borderPrimary;
         width: 100%;
         margin: 15px 10px;
         height: 230px;

@@ -4,6 +4,7 @@ import { lastPostsService } from "../service/post/lastPostsService.js";
 import { deletePostService } from "../service/post/deletePostService.js";
 import { likedPostsService, likeService } from "../service/post/likeService.js";
 import { dislikedPostsService, dislikeService } from "../service/post/dislikeService.js";
+import { paginationService } from "../service/post/paginationService.js";
 
 export const PostRouter = Router()
 
@@ -110,6 +111,25 @@ PostRouter.get('/dislikedPosts/:username', (req, res) => {
             success: posts.success,
             msg: posts.msg,
             res: posts.res
+        })
+    })
+})
+
+
+// post/pagination
+PostRouter.get('/pagination/:lastPostId/:limit', (req, res) => {
+    const { lastPostId, limit } = req.params;
+    
+    const lastPostId_Int = Number(lastPostId)
+    const limit_Int = Number(limit)
+
+    console.log('запрос на post/pagination - data >> ', lastPostId)
+
+    paginationService(lastPostId_Int, limit_Int)
+    .then(xz => {
+        res.json({
+            success: xz.success, 
+            res: xz.res
         })
     })
 })

@@ -7,7 +7,13 @@ export async function postsAPI(){
         
         const res = await axios.get('http://localhost:3000/post/lastPosts');
         postStore.setPosts(res.data.posts)
-        console.info('posts >> ', res.data.posts)
+        
+        const lastPostId = res.data.posts.at(-1);
+
+        console.log('lastPostId >> ', lastPostId.id)
+        postStore.setLastPostId(lastPostId.id)
+
+
         
     } catch(err){
         console.error('ERROR - api.ts - func addPostAPI, err > ', err)
@@ -62,5 +68,26 @@ export async function dislikePostAPI(id:number, type:'disliked'|'unDislike'){
     
     } catch(err){
         console.error('ERROR - api.ts - func addPostAPI, err > ', err)
+    }
+}
+
+export async function paginationPostsAPI(lastPostId:number, limit:number){
+    try {
+        console.log('pagination')
+
+        const res = await axios.get(`http://localhost:3000/post/pagination/${lastPostId}/${limit}`)
+        if(res.data.res){
+            const lastPost = res.data.res.at(-1)
+
+            if(lastPost){
+                console.log(`pagination - lastPostId >> `, lastPost)
+
+                postStore.setNewPosts(res.data.res)
+                postStore.setLastPostId(lastPost.id)
+            }
+        }
+        
+    } catch(err){
+        console.error('ERROR - api.ts - func paginationPostsAPI, err > ', err)
     }
 }
