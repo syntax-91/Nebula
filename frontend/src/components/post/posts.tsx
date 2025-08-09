@@ -38,9 +38,10 @@ import  Post  from './Post'
             {postStore.posts.map(post => (
                 <div key={post.id}>
                     <Post 
+                    createdAt={post.createdAt}
                     _count={{
                         likedBy: post._count?.likedBy || 0,
-                        dislikedBy: post._count?.dislikedBy || 0,
+                         dislikedBy: post._count?.dislikedBy || 0,
                     }}
                     id={post.id}
                     ownerUsername={post.ownerUsername} 

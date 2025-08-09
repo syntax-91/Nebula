@@ -10,11 +10,14 @@ export function AddPost(){
     const [text, setText] = useState('');
     
     const handleAddPost = () => {
+        
+        const date = new Date();
         setText('');
 
         const postData = {
             text: text,
-            ownerUsername: userStore.dataMap.username
+            ownerUsername: userStore.dataMap.username,
+            createdAt: date,
         }
         
         socket.emit('createPost', postData)

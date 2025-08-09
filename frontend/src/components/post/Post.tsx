@@ -13,6 +13,7 @@ import { IoHeartDislikeOutline } from "react-icons/io5";
 import { AiFillDislike, AiOutlineDislike } from "react-icons/ai";
 import { Button } from "../../shared/UI/Button";
 import { useInView } from "react-intersection-observer";
+import { format, isThisYear } from "date-fns";
 
  function Post({ ownerUsername, text, ...rest }:IPosts){
 
@@ -115,14 +116,33 @@ import { useInView } from "react-intersection-observer";
         }  
     }, [inView])
 
+    //
+    const postDate = new Date(rest.createdAt)
+    const isPostThisYear = isThisYear(postDate)
+    let formattedDate = '';
+
+    if(isPostThisYear){
+        formattedDate = format(postDate, 'd MMMM, HH:mm')
+    } else {
+        formattedDate = format(postDate, 'd MMMM yyyy, HH:mm')
+    }
+    
+
     
     return(
         <div ref={ref} className="Post tr2 cp ttb">
            <div className="b1">
                 <div className="userData">
                     <div className="ava"></div>
+                    
                     <div className="tochka"></div>
+
                     <p className="username">{ownerUsername}</p>
+
+                    <div className="tochka"></div>
+
+                    <p className="date">{`${formattedDate}`}</p>
+
                 </div>
 
                 <div 
@@ -130,6 +150,7 @@ import { useInView } from "react-intersection-observer";
                 className="menuIcon tr3">
                     <IoIosMore />
                 </div> 
+
            </div>
 
             {/* menu */}
