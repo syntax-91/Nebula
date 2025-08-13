@@ -5,14 +5,12 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 body {
   margin: 0;
@@ -36,4 +34,9 @@ h1 {
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+div {
+  -webkit-tap-highlight-color: transparent;
+  outline: 0px;
 }

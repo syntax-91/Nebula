@@ -1,59 +1,56 @@
-import express, { json } from 'express'
-import { AuthRouter } from './routes/auth.route.js';
-import cors from 'cors'
-import { PostRouter } from './routes/post.route.js';
-import { Server } from 'socket.io'
-import {createServer} from 'http'
-import { Socket } from './service/socket/socketService.js';
-import { QueryRouter } from './routes/query.route.js';
-import { UserdataRouter } from './routes/userdata.route.js';
+import express, { json } from "express";
+import { AuthRouter } from "./routes/auth.route.js";
+import cors from "cors";
+import { PostRouter } from "./routes/post.route.js";
+import { Server } from "socket.io";
+import { createServer } from "http";
+import { Socket } from "./service/socket/socketService.js";
+import { QueryRouter } from "./routes/query.route.js";
+import { UserdataRouter } from "./routes/userdata.route.js";
 
-const app = express()
+const app = express();
 const PORT = 3000;
 
-const server = createServer(app)
+const server = createServer(app);
 
 // socket.io
 const io = new Server(server, {
-    cors:{
-        origin: '*',
-        methods: ['GET', 'POST']
-    }
-})
-
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
 // JSON
-app.use(express.json())
+app.use(express.json());
 
 // CORS
 app.use(
-    cors({
-        origin: '*',
-        credentials: true  
-    })
-)
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 //routes
-app.use('/auth', AuthRouter)
+app.use("/auth", AuthRouter);
 
-app.use('/post', PostRouter)
+app.use("/post", PostRouter);
 
-app.use('/query', QueryRouter)
+app.use("/query", QueryRouter);
 
-app.use('/userdata', UserdataRouter)
+app.use("/userdata", UserdataRouter);
 
-const run = async() => {
-    
-    try {
+const run = async () => {
+  try {
+    await Socket(io);
 
-        await Socket(io)
+    server.listen(PORT, "192.168.100.108", () => {
+      console.log(`Server running at http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.log("ERROR - server.js - func run >> ", err);
+  }
+};
 
-        server.listen(PORT, () => {
-            console.log(`Server running at http://localhost:${PORT}`)
-        })
-    } catch(err){
-        console.log('ERROR - server.js - func run >> ', err)
-    }
-}
-
-run()
+run();

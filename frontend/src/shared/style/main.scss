@@ -5,57 +5,62 @@ $borderAccent: #131212;
 $hoverColorBorder: #201f1f;
 
 $color: #aaa5a7;
-$mainPrimary: #34247E;
+$mainPrimary: #34247e;
 
 $radius: 10px;
 $radius_sm: 15px;
 $radius_md: 30px; // **def
 $radius_lg: 50px;
- 
-
 
 $hoverColor: #151414;
-$activeColor: #0c0c0c; 
+$activeColor: #0c0c0c;
 
 .cp {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
 :root {
-    background-color: $bg;
-    color: $color;
+  background-color: $bg;
+  color: $color;
 }
 
 .tochka {
-    width: 3px;
-    height: 3px;
-    background-color: rgb(154, 151, 151);
+  width: 3px;
+  height: 3px;
+  background-color: rgb(154, 151, 151);
 }
 
 .bgPrimary {
-    background-color: $mainPrimary;    
+  background-color: $mainPrimary;
 }
 
 .el {
-    
-    transition: all 0.3s ease;
-    border-radius: $radius_lg;
-    border: 1px solid transparent;
+  transition: all 0.3s ease;
+  border-radius: $radius_lg;
+  border: 1px solid transparent;
 
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    
-    margin-top: 1px;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 
-    &:hover {
-        background-color: $hoverColor;
-        border: 1px outset $borderPrimary;
-    }
+  margin-top: 1px;
+  gap: 10px;
 
-    &:active {
-        background-color: $activeColor;
-    }
+  &:hover {
+    border: 1px outset $borderPrimary;
+    background-color: $hoverColor;
+  }
+
+  &:active {
+    background-color: $activeColor;
+  }
+}
+
+@media (max-width: 700px) {
+  .el:hover,
+  el:active {
+    border: 1px transparent;
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
 }

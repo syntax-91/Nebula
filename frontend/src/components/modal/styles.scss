@@ -1,27 +1,26 @@
-@use '../../shared/style/main.scss' as g;
+@use "../../shared/style/main.scss" as g;
 
 .modalC {
-    width: 100%;
-    position: fixed;
-    left: 0;
-    bottom: 30px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 55px;
 }
 
 .modal {
-    border: 1px solid g.$borderPrimary;
-    padding: 0px 20px;
+  border: 1px solid g.$borderPrimary;
+  padding: 0px 20px;
 
-    background-color: g.$bg;
+  background-color: g.$bg;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 
-    border-radius: g.$radius_md;
+  border-radius: g.$radius_md;
 
-    .close:hover {
-        opacity: 0.8;
-    }
-    
+  .close:hover {
+    opacity: 0.8;
+  }
 }
