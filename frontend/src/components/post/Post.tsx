@@ -140,14 +140,14 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
 
           {isLiked && (
             <BiSolidLike
-              className="likeEl"
+              className="unlikeEl"
               size={20}
               color="#d9d8d8"
               onClick={() =>
                 handleUnLikedPost({
                   id: rest.id,
-                  setIsLiked: setIsLiked,
-                  setLikedByState: setLikedByState,
+                  setIsDisliked: setIsLiked,
+                  setDislikedByState: setLikedByState,
                 })
               }
             />

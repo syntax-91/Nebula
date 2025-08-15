@@ -1,18 +1,17 @@
-@use '../../shared/style/main.scss' as g;
+@use "../../shared/style/main.scss" as g;
 
 .sideBar {
-    height: 100%;
-    border-right: 1px outset g.$borderPrimary;
-    padding: 0px 10px;
+  height: 100%;
+  border-right: 1px outset g.$borderPrimary;
+  padding: 0px 10px;
 }
 
 .menu {
-    margin-top: 40px;
-    width: 100%;
+  margin-top: 40px;
 
-    .sideBarEl {
-        transition: all 0.3s ease;
-        padding: 0px 15px;
-    }
+  .sideBarEl {
+    width: fit-content;
+    transition: all 0.3s ease;
+    padding: 0 20px 0px 15px;
+  }
 }
- 

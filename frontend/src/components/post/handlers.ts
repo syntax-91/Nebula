@@ -35,19 +35,35 @@ interface ILikePost {
 }
 
 export const handleLikedPost = ({ ...props }: ILikePost) => {
+  props.setIsLiked(true);
+  props.setLikedByState((prev) => (prev += 1));
+
   likePostAPI(props.id, "liked").then((e) => {
-    if (e) {
-      props.setIsLiked(true);
-      props.setLikedByState((prev) => (prev += 1));
+    if (e !== true) {
+      console.error(e);
+      props.setIsLiked(false);
+      props.setLikedByState((prev) => (prev -= 1));
+
+      modalStore.run("не удалось поставить лайк(");
     }
   });
 };
 
-export const handleUnLikedPost = ({ ...props }: ILikePost) => {
+interface IDislikePost {
+  id: number;
+  setIsDisliked: (e: SetStateAction<boolean>) => void;
+  setDislikedByState: (e: SetStateAction<number>) => void;
+}
+
+export const handleUnLikedPost = ({ ...props }: IDislikePost) => {
+  props.setIsDisliked(false);
+  props.setDislikedByState((prev) => (prev -= 1));
+
   likePostAPI(props.id, "unlike").then((e) => {
-    if (e) {
-      props.setIsLiked(false);
-      props.setLikedByState((prev) => (prev -= 1));
+    if (e !== true) {
+      props.setIsDisliked(true);
+      props.setDislikedByState((prev) => (prev += 1));
+      modalStore.run("не удалось убрать лайк(");
     }
   });
 };
