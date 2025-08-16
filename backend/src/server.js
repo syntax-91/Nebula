@@ -45,7 +45,7 @@ const run = async () => {
   try {
     await Socket(io);
 
-    server.listen(PORT, "192.168.100.108", () => {
+    server.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
     });
   } catch (err) {

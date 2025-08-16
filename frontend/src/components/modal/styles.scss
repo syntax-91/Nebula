@@ -9,7 +9,7 @@
 
 .modal {
   border: 1px solid g.$borderPrimary;
-  padding: 0px 20px;
+  padding: 7px 13px;
 
   background-color: g.$bg;
 
@@ -20,7 +20,11 @@
 
   border-radius: g.$radius_md;
 
-  .close:hover {
+  .closeEl {
+    width: 80px;
+  }
+
+  .closeEl:hover {
     opacity: 0.8;
   }
 }

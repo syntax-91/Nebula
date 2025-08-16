@@ -1,76 +1,82 @@
-@use '../../shared/style/main.scss' as g;
+@use "../../shared/style/main.scss" as g;
 
 .Input {
-    border: 1px solid g.$borderPrimary;
-    outline: 0;
-    background: none;
+  border: 1px solid g.$borderPrimary;
+  outline: 0;
+  background: none;
 
-    height: 45px;
-    margin-top: 5px; 
+  height: 45px;
+  margin-top: 5px;
 
-    padding: 5px 20px;
+  padding: 5px 20px;
+}
+
+.Input:focus {
+  border: 1px solid g.$mainPrimary;
 }
 
 .textarea {
-    max-width: 100%;
-    
-    border: 1px solid g.$borderAccent;
-    border-radius: g.$radius;
+  max-width: 100%;
 
-    outline: 0;
-    background: none;
-    resize: none;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
+  border: 1px solid g.$borderAccent;
+  border-radius: g.$radius;
+
+  outline: 0;
+  background: none;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
 }
 
 .Button {
-    width: 100%;
-    transition: all 0.3s ease;
-    padding: 10px 25px;
-    border: 0;
-    border-radius: g.$radius_md;
-    margin-top: 5px; 
+  width: 100%;
+  transition: all 0.3s ease;
+  padding: 10px 25px;
+  border: 0;
+  border-radius: g.$radius_md;
+  margin-top: 5px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Button:hover {
-    background-color: g.$hoverColor;
+  background-color: g.$hoverColor;
 }
 
 .Button:active {
-    background-color: g.$activeColor;
+  background-color: g.$activeColor;
 }
 
 .bgPrimary {
-    background-color: g.$mainPrimary;
+  background-color: g.$mainPrimary;
 }
 
 .bgNone {
-    background: none;
-    border: 1px solid g.$borderPrimary;
+  background: none;
+  border: 1px solid g.$borderPrimary;
 }
 
 /* loader */
 
 .loaderC {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-   
-    .loaderEl {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-        border-top: 2px solid g.$mainPrimary;
-        border-right: 2px solid g.$borderAccent;
-        border-bottom: 2px solid g.$borderAccent;
-        border-left: 2px solid g.$borderAccent;
-        
-    }
+  width: 100vw;
+  height: 100vh;
+
+  .loaderEl {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    border-top: 2px solid g.$mainPrimary;
+    border-right: 2px solid g.$borderAccent;
+    border-bottom: 2px solid g.$borderAccent;
+    border-left: 2px solid g.$borderAccent;
+  }
 }

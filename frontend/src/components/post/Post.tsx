@@ -4,7 +4,6 @@ import "./styles.scss";
 import { useEffect, useState } from "react";
 import { userStore } from "../../app/store/user/userStore";
 import { observer } from "mobx-react-lite";
-import { paginationPostsAPI } from "./api";
 import { postStore } from "../../app/store/post/postStore";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import { AiFillDislike, AiOutlineDislike } from "react-icons/ai";
@@ -53,8 +52,9 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
 
   // pagination
   useEffect(() => {
-    if (inView && rest.id === postStore.lastPostId) {
-      paginationPostsAPI(rest.id, 15);
+    if (inView && rest.id === rest.lastPostId) {
+      console.log("Post.tsx 56");
+      rest.paginationFunc();
     }
   }, [inView]);
 
@@ -69,7 +69,7 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
   }
 
   return (
-    <div ref={ref} className="Post tr2 cp fn">
+    <div ref={ref} className="Post tr2 cp">
       <div className="b1">
         {/* userData */}
         <div className="userData">

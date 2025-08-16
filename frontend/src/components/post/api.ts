@@ -1,27 +1,27 @@
 import axios from "axios";
 import { postStore } from "../../app/store/post/postStore";
 import { userStore } from "../../app/store/user/userStore";
+import { serverUrl } from "../../shared/serverUrl";
 
 export async function postsAPI() {
   try {
-    const res = await axios.get("http://192.168.100.108:3000/post/lastPosts");
+    const res = await axios.get(`${serverUrl}/post/lastPosts`);
     postStore.setPosts(res.data.posts);
 
     const lastPostId = res.data.posts.at(-1);
 
-    console.log("lastPostId >> ", lastPostId.id);
+    //console.log("lastPostId >> ", lastPostId.id);
     postStore.setLastPostId(lastPostId.id);
   } catch (err) {
-    console.error("ERROR - api.ts - func addPostAPI, err > ", err);
+    console.error("ERROR - api.ts - func postsAPI, err > ", err);
   }
 }
 
 export async function deletePostAPI(id: number) {
   try {
-    const res = await axios.post(
-      "http://192.168.100.108:3000/post/deletePost",
-      { postId: id }
-    );
+    const res = await axios.post(`${serverUrl}/post/deletePost`, {
+      postId: id,
+    });
     return res.data.success;
   } catch (err) {
     console.error("ERROR - api.ts - func addPostAPI, err > ", err);
@@ -32,7 +32,7 @@ export async function likePostAPI(id: number, type: "liked" | "unlike") {
   try {
     console.log("handleLike - deletePostAPI ");
 
-    const res = await axios.post("http://192.168.100.108:3000/post/like", {
+    const res = await axios.post(`${serverUrl}/post/like`, {
       postId: id,
       username: userStore.dataMap.username,
       type: type,
@@ -54,7 +54,7 @@ export async function dislikePostAPI(
   try {
     console.log("handleDislike ");
 
-    const res = await axios.post("http://192.168.100.108:3000/post/dislike", {
+    const res = await axios.post(`${serverUrl}/post/dislike`, {
       postId: id,
       username: userStore.dataMap.username,
       type: type,
@@ -74,7 +74,7 @@ export async function paginationPostsAPI(lastPostId: number, limit: number) {
     console.log("pagination");
 
     const res = await axios.get(
-      `http://192.168.100.108:3000/post/pagination/${lastPostId}/${limit}`
+      `${serverUrl}/post/pagination/${lastPostId}/${limit}`
     );
     if (res.data.res) {
       const lastPost = res.data.res.at(-1);

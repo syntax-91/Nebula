@@ -1,14 +1,14 @@
 export interface IUserdataAuth {
-    username: string,
-    password: string
+  username: string;
+  password: string;
 }
-
 
 export interface IPosts {
-    ownerUsername: string,
-    text: string
-    createdAt:string
-    _count?: { likedBy:number, dislikedBy:number }
-    id: number
+  ownerUsername: string;
+  text: string;
+  lastPostId: number;
+  paginationFunc: () => void;
+  createdAt: string;
+  _count?: { likedBy: number; dislikedBy: number };
+  id: number;
 }
-

@@ -6,6 +6,7 @@ $hoverColorBorder: #201f1f;
 
 $color: #aaa5a7;
 $mainPrimary: #34247e;
+$accentColor: #1a1919;
 
 $radius: 10px;
 $radius_sm: 15px;
@@ -35,7 +36,7 @@ $activeColor: #0c0c0c;
 }
 
 .el {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in-out;
   border-radius: $radius_lg;
   border: 1px solid transparent;
 

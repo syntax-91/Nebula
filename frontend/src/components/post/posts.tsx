@@ -1,56 +1,56 @@
-import { useEffect } from 'react'
-import './styles.scss'
-import { socket } from '../../app/socketIo'
-import type { IPosts } from '../../shared/types/types'
-import {  postsAPI } from './api'
-import { postStore } from '../../app/store/post/postStore'
-import { observer } from 'mobx-react-lite'
-import  Post  from './Post'
+import { useEffect } from "react";
+import "./styles.scss";
+import { socket } from "../../app/socketIo";
+import type { IPosts } from "../../shared/types/types";
+import { paginationPostsAPI, postsAPI } from "./api";
+import { postStore } from "../../app/store/post/postStore";
+import { observer } from "mobx-react-lite";
+import Post from "./Post";
 
- function Posts(){
- 
-    useEffect(() => {
+function Posts() {
+  useEffect(() => {
+    const handleNewPost = (data: IPosts) => {
+      console.info("new-post =- socket >> ", data);
+      postStore.setNewPost(data);
+    };
 
-        const handleNewPost = (data:IPosts) => {
-            console.info('new-post =- socket >> ', data)
-            postStore.setNewPost(data)
-        }
+    socket.on("new-post", handleNewPost);
 
-        socket.on('new-post', handleNewPost)
+    return () => {
+      socket.off("new-post", handleNewPost);
+    };
+  }, []);
 
-        return () => {
-            socket.off('new-post', handleNewPost)
-        }
-    }, [])
-     
-    useEffect(() => {
-        postStore.FetchLikedPosts()
-        postStore.FetchDislikedPosts()
-        postsAPI()
-    }, [])
+  useEffect(() => {
+    postStore.FetchLikedPosts();
+    postStore.FetchDislikedPosts();
+    postsAPI();
+  }, []);
 
-    useEffect(() => {
-        console.info('изменение в postStore/posts')
-    }, [postStore.posts])
- 
-    return (
-        <div className="posts">
-            {postStore.posts.map(post => (
-                <div key={post.id}>
-                    <Post 
-                    createdAt={post.createdAt}
-                    _count={{
-                        likedBy: post._count?.likedBy || 0,
-                         dislikedBy: post._count?.dislikedBy || 0,
-                    }}
-                    id={post.id}
-                    ownerUsername={post.ownerUsername} 
-                     text={post.text} 
-                    />
-                </div>
-            ))} 
+  useEffect(() => {
+    console.info("изменение в postStore/posts");
+  }, [postStore.posts]);
+
+  return (
+    <div className="posts">
+      {postStore.posts.map((post) => (
+        <div key={post.id}>
+          <Post
+            paginationFunc={() => paginationPostsAPI(post.id, 15)}
+            lastPostId={postStore.lastPostId}
+            createdAt={post.createdAt}
+            _count={{
+              likedBy: post._count?.likedBy || 0,
+              dislikedBy: post._count?.dislikedBy || 0,
+            }}
+            id={post.id}
+            ownerUsername={post.ownerUsername}
+            text={post.text}
+          />
         </div>
-    )
+      ))}
+    </div>
+  );
 }
 
-export default observer(Posts)
+export default observer(Posts);

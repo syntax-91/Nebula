@@ -5,69 +5,60 @@ import { Suspense } from "react";
 import Main from "../../components/main/Main";
 import { Loader } from "../../shared/UI/Loader";
 
-export function AppRouter(){
+export function AppRouter() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Layout */}
+        <Route path={routesConfig.home.path} element={<Home />}>
+          <Route index element={<Main />} />
 
-    return (
-        <BrowserRouter>
-            <Routes>
-                {/* Layout */}
-                <Route path={routesConfig.home.path} element={<Home />} >
+          {/* Noti */}
+          <Route
+            path={routesConfig.home.outlets.notifications.path}
+            element={
+              <Suspense fallback={<Loader />}>
+                <routesConfig.home.outlets.notifications.component />
+              </Suspense>
+            }
+          />
 
-                    <Route index element={<Main />} />
+          {/* Search*/}
+          <Route
+            path={routesConfig.home.outlets.search.path}
+            element={
+              <Suspense fallback={<Loader />}>
+                <routesConfig.home.outlets.search.component />
+              </Suspense>
+            }
+          />
+        </Route>
 
-                    {/* Noti */}
-                    <Route 
-                        path={routesConfig.home.outlets.notifications.path} 
-                        element={
-                        <Suspense fallback={<Loader />}>
-                            <routesConfig.home.outlets.notifications.component/>
-                        </Suspense>
-                    }
-                    />
+        {/* lazyRoutes */}
+        {lazyRoutesConfig.map((e, idx) => (
+          <Route path={e.path} element={<e.component />} key={idx} />
+        ))}
 
-                    {/* Search*/}
-                    <Route 
-                        path={routesConfig.home.outlets.search.path} 
-                        element={
-                        <Suspense fallback={<Loader />}>
-                            <routesConfig.home.outlets.search.component/>
-                        </Suspense>
-                    }
-                    />
+        {/* Settings */}
+        <Route
+          path={routesConfig.settings.path}
+          element={
+            <Suspense fallback={<p>загрузка</p>}>
+              <routesConfig.settings.component />
+            </Suspense>
+          }
+        />
 
-                 </Route>
-                
-                {/* lazyRoutes */}
-                {lazyRoutesConfig.map((e,idx) => (
-                    <Route 
-                    path={e.path} 
-                    element={<e.component />} 
-                    key={idx}
-                    />
-                ))}
-
-
-                {/* Settings */}
-                <Route 
-                path={routesConfig.settings.path} 
-                element={
-                    <Suspense fallback={<p>загрузка</p>}>
-                        <routesConfig.settings.component/>
-                    </Suspense>
-                }
-                />
-
-                {/* User */}
-                <Route 
-                path={routesConfig.user.path} 
-                element={
-                    <Suspense fallback={<p>загрузка</p>}>
-                        <routesConfig.user.component/>
-                    </Suspense>
-                }
-                />
-
-            </Routes>
-        </BrowserRouter>
-    )
+        {/* User */}
+        <Route
+          path={routesConfig.user.path}
+          element={
+            <Suspense fallback={<Loader />}>
+              <routesConfig.user.component />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }

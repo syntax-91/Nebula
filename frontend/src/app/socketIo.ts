@@ -1,5 +1,6 @@
 import { io } from "socket.io-client";
+import { serverUrl } from "../shared/serverUrl";
 
-const URL = "http://192.168.100.108:3000";
+const URL = `${serverUrl}`;
 
 export const socket = io(URL);
