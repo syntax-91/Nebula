@@ -1,7 +1,7 @@
 $bg: #020202;
 
 $borderPrimary: #202020;
-$borderAccent: #131212;
+$borderAccent: #141313;
 $hoverColorBorder: #201f1f;
 
 $color: #aaa5a7;
@@ -16,10 +16,6 @@ $radius_lg: 50px;
 $hoverColor: #151414;
 $activeColor: #0c0c0c;
 
-.cp {
-  cursor: pointer;
-}
-
 :root {
   background-color: $bg;
   color: $color;
@@ -33,35 +29,4 @@ $activeColor: #0c0c0c;
 
 .bgPrimary {
   background-color: $mainPrimary;
-}
-
-.el {
-  transition: all 0.2s ease-in-out;
-  border-radius: $radius_lg;
-  border: 1px solid transparent;
-
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-
-  margin-top: 1px;
-  gap: 10px;
-
-  &:hover {
-    border: 1px outset $borderPrimary;
-    background-color: $hoverColor;
-  }
-
-  &:active {
-    background-color: $activeColor;
-  }
-}
-
-@media (max-width: 700px) {
-  .el:hover,
-  el:active {
-    border: 1px transparent;
-    opacity: 0.5;
-    transform: scale(0.9);
-  }
 }

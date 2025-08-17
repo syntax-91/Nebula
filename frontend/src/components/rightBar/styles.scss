@@ -1,23 +1,20 @@
-@use '../../shared/style/main.scss' as g;
+@use "../../shared/style/main.scss" as g;
 
 .rightBar {
-    border-left: 1px outset g.$borderAccent;
-    
-    width: 300px;
-    height: 100%;
-    
-        
+  border-left: 1px solid g.$borderPrimary;
 
-    .rightBar_ad {
-        
-        border: 1px outset g.$borderPrimary;
-        width: 100%;
-        margin: 15px 10px;
-        height: 230px;
-        border-radius: g.$radius_md;
-        
-        &:hover {
-            border: 1px outset g.$borderPrimary;
-        }
+  width: 300px;
+  height: 100%;
+
+  .rightBar_ad {
+    border: 0.2px solid g.$borderPrimary;
+    width: 100%;
+    margin: 15px 10px;
+    height: 230px;
+    border-radius: g.$radius_md;
+
+    &:hover {
+      border: 1px solid g.$borderAccent;
     }
+  }
 }

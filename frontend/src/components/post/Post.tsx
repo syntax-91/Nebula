@@ -69,7 +69,7 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
   }
 
   return (
-    <div ref={ref} className="Post tr2 cp">
+    <div ref={ref} className="Post tr2 up cp">
       <div className="b1">
         {/* userData */}
         <div className="userData">
@@ -157,7 +157,7 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
         </div>
 
         {/* dislike */}
-        <div className="likeC">
+        <div className="dislikeC">
           {!isDisliked && (
             <AiOutlineDislike
               className="likeEl"

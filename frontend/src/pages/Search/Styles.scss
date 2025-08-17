@@ -1,81 +1,80 @@
-@use '../../shared/style/main.scss' as g;
+@use "../../shared/style/main.scss" as g;
 
 // Desktop
 @media (min-width: 700px) {
-    .headerSearch {
-        width: 80%;
-    }
+  .headerSearch {
+    width: 80%;
+  }
 }
 
 // mobile
 @media (max-width: 700px) {
-    .headerSearch {
-        width: 95%;
-    }
+  .headerSearch {
+    width: 95%;
+  }
 }
-
 
 // mobile
 @media (max-width: 700px) {
-    .resContainer {
-        width: 90%;
+  .resContainer {
+    width: 90%;
 
-        .resEl {
-           width: 100%;
-            background-color: rgb(50, 48, 48);
-            padding: 10px 25px;
-        }
+    .resEl {
+      width: 100%;
+      background-color: rgb(50, 48, 48);
+      padding: 10px 25px;
     }
+  }
 }
 
 // desktop
 @media (min-width: 700px) {
-    .resContainer {
-        width: 700px;
-    }
+  .resContainer {
+    width: 700px;
+  }
 }
 
 .resContainer {
+  margin: auto;
+  margin-top: 5px;
 
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: g.$radius_md;
+
+  .resEl {
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+
     margin-top: 5px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-    
-    margin-top: 20px;
-    padding: 5px;
     border-radius: g.$radius_md;
 
-    .resEl {
-        width: 100%;
-        padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-        margin-top: 5px;
-
-        border-radius: g.$radius_md;
-
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        .ava {
-            background-color: rgb(24, 24, 24);
-            width: 50px;
-            border-radius: 50%;
-            height: 50px;
-        }
+    .ava {
+      background-color: rgb(24, 24, 24);
+      width: 50px;
+      border-radius: 50%;
+      height: 50px;
     }
+  }
 
-    input {
-        background-color: red;
-    }
+  input {
+    background-color: red;
+  }
 
-    h2 {
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-size: 20px;
-    }
+  h2 {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 20px;
+  }
 }

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import type { IUserdataAuth } from "../../../shared/types/types";
 import { RegisterAPI } from "./api";
-import { pswSchema, usernameSchema } from "../schema";
+import { displayNameSchema, pswSchema, usernameSchema } from "../schema";
 import { Button } from "../../../shared/UI/Button";
 import "../styles.scss";
 
@@ -29,7 +29,19 @@ export default function RegisterForm() {
 
       <div>
         <input
-          placeholder="Введите имя пользователя"
+          placeholder="имя для отображение"
+          className="Input"
+          {...register("displayName", displayNameSchema)}
+        />
+
+        {errors.displayName?.message && (
+          <p className="validate-text">{errors.displayName.message}</p>
+        )}
+      </div>
+
+      <div>
+        <input
+          placeholder="имя пользователя"
           className="Input"
           {...register("username", usernameSchema)}
         />
@@ -41,7 +53,7 @@ export default function RegisterForm() {
 
       <div>
         <input
-          placeholder="Введите пароль.."
+          placeholder="пароль"
           className="Input"
           {...register("password", pswSchema)}
         />

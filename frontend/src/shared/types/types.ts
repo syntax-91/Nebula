@@ -1,6 +1,8 @@
 export interface IUserdataAuth {
   username: string;
   password: string;
+
+  displayName?: string;
 }
 
 export interface IPosts {

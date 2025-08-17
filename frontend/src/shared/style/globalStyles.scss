@@ -1,0 +1,61 @@
+@use "./main.scss" as g;
+
+.block {
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block:hover {
+  opacity: 0.8;
+}
+
+.block:active {
+  opacity: 0.5;
+}
+
+.el {
+  transition: all 0.2s ease-in-out;
+  border-radius: g.$radius_lg;
+  border: 1px solid transparent;
+
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  margin-top: 1px;
+  gap: 10px;
+
+  &:hover {
+    border: 1px solid g.$borderPrimary;
+    background-color: g.$hoverColor;
+  }
+
+  &:active {
+    background-color: g.$activeColor;
+  }
+}
+
+@media (max-width: 700px) {
+  .el:hover,
+  el:active {
+    border: 1px transparent;
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+::selection {
+  background-color: g.$mainPrimary;
+}
