@@ -2,6 +2,7 @@ import { makeAutoObservable, reaction } from "mobx";
 import type { IPosts } from "../../../shared/types/types";
 import axios from "axios";
 import { userStore } from "../user/userStore";
+import { serverUrl } from "../../../shared/serverUrl";
 
 interface ILikedPosts {
   postId: number;
@@ -54,7 +55,7 @@ class PostStoreClass {
   async FetchLikedPosts() {
     try {
       const res = await axios.get(
-        `http://192.168.100.108:3000/post/likedPosts/${userStore.dataMap.username}`
+        `${serverUrl}/post/likedPosts/${userStore.dataMap.username}`
       );
       this.setLikedPosts(res.data.res);
 
@@ -67,7 +68,7 @@ class PostStoreClass {
   async FetchDislikedPosts() {
     try {
       const res = await axios.get(
-        `http://192.168.100.108:3000/post/dislikedPosts/${userStore.dataMap.username}`
+        `${serverUrl}/post/dislikedPosts/${userStore.dataMap.username}`
       );
       this.setDislikedPosts(res.data.res);
 

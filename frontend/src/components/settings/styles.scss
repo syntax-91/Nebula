@@ -1,0 +1,64 @@
+@use "../../shared/style/main.scss" as g;
+
+.settingsList {
+  width: 700px;
+
+  margin: auto;
+  margin-top: 30px;
+  padding: 25px 15px;
+
+  border: 1px solid g.$borderPrimary;
+}
+
+.settingsListEl {
+  border: 1px solid g.$borderPrimary;
+
+  width: fit-content;
+  padding: 0px 20px;
+
+  margin-top: 5px;
+
+  border-radius: g.$radius_md;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .elIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+  }
+
+  ._ {
+    margin-left: auto;
+  }
+}
+
+/* settingsBlock */
+
+.settingsBlockMC {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+
+  .settingsBlock {
+    border: 1px solid g.$borderPrimary;
+    padding: 10px 30px;
+    border-radius: g.$radius_sm;
+
+    p {
+      margin: 10px 0px;
+    }
+  }
+}

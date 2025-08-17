@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { IPosts } from "../../shared/types/types";
+import { serverUrl } from "../../shared/serverUrl";
 
 interface IUserdata {
   username: string;
@@ -13,9 +14,7 @@ export async function userDataAPI({
   setLastPostId,
 }: IUserdata) {
   try {
-    const res = await axios.get(
-      `http://192.168.100.108:3000/userdata/${username}`
-    );
+    const res = await axios.get(`${serverUrl}/user/data/${username}`);
 
     setPosts(res.data.posts || []);
     ///////////////////////////////////////
