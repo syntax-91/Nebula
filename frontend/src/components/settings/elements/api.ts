@@ -1,11 +1,25 @@
 import axios from "axios";
 import { serverUrl } from "../../../shared/serverUrl";
 
-export async function userHashPswAPI(username: string) {
+interface IChangePsw {
+  username: string;
+  oldPsw: string;
+  newPsw: string;
+}
+
+export async function changePswAPI({ ...props }: IChangePsw) {
   try {
-    const res = await axios.get(`${serverUrl}/${username}`);
-    return res.data.hashPsw;
+    const res = await axios.post(
+      `${serverUrl}/user/changePsw/${props.username}/${props.oldPsw}/${props.newPsw}`
+    );
+
+    console.log("changePsw res >> ", res.data);
+
+    return {
+      success: res.data.success,
+      msg: res.data.msg,
+    };
   } catch (err) {
-    console.error(`ERROR > userHashPswAPI (settings/elements) - ${err}}`);
+    console.error(`ERROR > changePswAPI - ${err}}`);
   }
 }

@@ -10,7 +10,7 @@ interface props {
 export default function SettingsBlock({ ...props }: props) {
   return (
     <div className="settingsBlockMC">
-      <div className="settingsBlock">
+      <div className="settingsBlock fn">
         <div className="header">
           <p className="cp" onClick={() => props.setIsOpen(false)}>
             Назад

@@ -1,1 +1,11 @@
-    
+.changePsw {
+  p {
+    text-align: center;
+  }
+  display: flex;
+  flex-flow: column;
+
+  .btn {
+    margin: 15px 0px;
+  }
+}
