@@ -1,99 +1,117 @@
 /* fade-in */
 
 .fn {
-    animation: fn 0.3s ease;
+  animation: fn 0.3s ease;
 }
 
 @keyframes fn {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
 
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* fade-out */
 
 .fo {
-    animation: fo 0.3s ease;
+  animation: fo 0.3s ease;
 }
 
 @keyframes fo {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
 }
 
 /* top-to-bottom */
 
 .ttb {
-    animation: ttb 0.3s ease;
+  animation: ttb 0.3s ease;
 }
 
 @keyframes ttb {
-    0% {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 /* up */
 
 .up {
-    animation: up 0.3s ease;
+  animation: up 0.3s ease;
 }
 
 @keyframes up {
-    0% {
-        transform: translateY(30px);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 /* bottom-to-top */
 
 .rtl {
-    animation: rtl 0.3s ease;
+  animation: rtl 0.3s ease;
 }
 
 @keyframes rtl {
-    0% {
-        transform: translateX(30px);
-        opacity: 0;
-    }
+  0% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translateX(0px);
-        opacity: 1;
-    }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 
 /* rotate 360 infinine */
 
 .r360_inf {
-    animation: r360_inf 0.5s linear infinite;
+  animation: r360_inf 0.5s linear infinite;
 }
 
 @keyframes r360_inf {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.anim_o0_to_o1,
+.o0o1 {
+  animation: o0o1 0.3s ease-in-out forwards;
+}
+
+@keyframes o0o1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

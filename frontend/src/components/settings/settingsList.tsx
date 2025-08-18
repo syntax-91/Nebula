@@ -2,9 +2,12 @@ import { GoChevronRight } from "react-icons/go";
 import "./styles.scss";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlinePassword } from "react-icons/md";
-import { handleChangePsw } from "./handlers";
+import { handleAbout, handleChangePsw } from "./handlers";
 import type { ReactNode, SetStateAction } from "react";
 import { ChangePsw } from "./elements/changePsw";
+import { SettingsListEl } from "./settingsListEl";
+import { About } from "./elements/about";
+import { FcAbout } from "react-icons/fc";
 
 interface props {
   setIsOpenSettingsBlock: (e: SetStateAction<boolean>) => void;
@@ -14,17 +17,25 @@ interface props {
 export default function SettingsList({ ...props }: props) {
   return (
     <div className="settingsList">
-      {/* myProfile */}
-      <div className="settingsListEl el cp">
-        <div className="elIcon">
-          <CgProfile size={30} />
-        </div>
-        <p className="label">мои профиль</p>
-        <GoChevronRight className="_" />
-      </div>
+      <SettingsListEl
+        onClick={() => {}}
+        icon={<CgProfile size={30} />}
+        label="мои профиль"
+      />
 
-      {/* psw */}
-      <div
+      <SettingsListEl
+        onClick={() =>
+          handleAbout({
+            setIsOpenSettingsBlock: props.setIsOpenSettingsBlock,
+            setSettingsBlockChildren: props.setSettingsBlockChildren,
+            settingsBlockChildren: <About />,
+          })
+        }
+        icon={<FcAbout size={30} />}
+        label="о проекте"
+      />
+
+      <SettingsListEl
         onClick={() =>
           handleChangePsw({
             setIsOpenSettingsBlock: props.setIsOpenSettingsBlock,
@@ -32,14 +43,9 @@ export default function SettingsList({ ...props }: props) {
             settingsBlockChildren: <ChangePsw />,
           })
         }
-        className="settingsListEl el cp"
-      >
-        <div className="elIcon">
-          <MdOutlinePassword size={30} />
-        </div>
-        <p className="label">сменить пароль</p>
-        <GoChevronRight className="_" />
-      </div>
+        label="сменить пароль"
+        icon={<MdOutlinePassword size={30} />}
+      />
     </div>
   );
 }

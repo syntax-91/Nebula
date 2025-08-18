@@ -6,6 +6,23 @@
   flex-flow: column;
 
   .btn {
-    margin: 15px 0px;
+    margin: 5px 0px;
+  }
+}
+
+.about {
+  width: 310px;
+  max-width: 95%;
+  padding-bottom: 15px;
+
+  .text {
+    margin: 0;
+    padding: 0;
+  }
+
+  .email {
+    width: fit-content;
+    padding: 2px 10px;
+    margin: 0;
   }
 }

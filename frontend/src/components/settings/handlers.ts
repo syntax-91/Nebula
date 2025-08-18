@@ -1,16 +1,17 @@
 import type { ReactNode, SetStateAction } from "react";
 
-interface IChangePsw {
+interface IB {
   setIsOpenSettingsBlock: (e: SetStateAction<boolean>) => void;
   setSettingsBlockChildren: (e: SetStateAction<ReactNode>) => void;
   settingsBlockChildren: ReactNode;
 }
 
-export function handleChangePsw({
-  setIsOpenSettingsBlock,
-  settingsBlockChildren,
-  setSettingsBlockChildren,
-}: IChangePsw) {
-  setIsOpenSettingsBlock(true);
-  setSettingsBlockChildren(settingsBlockChildren);
+export function handleChangePsw({ ...props }: IB) {
+  props.setIsOpenSettingsBlock(true);
+  props.setSettingsBlockChildren(props.settingsBlockChildren);
+}
+
+export function handleAbout({ ...props }: IB) {
+  props.setIsOpenSettingsBlock(true);
+  props.setSettingsBlockChildren(props.settingsBlockChildren);
 }
