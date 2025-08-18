@@ -22,7 +22,7 @@ export function ReportABug() {
 
   return (
     <div className="reportABug">
-      <h3>report a bug</h3>
+      <h3>сообщить о баге</h3>
 
       <TextArea
         placeholder="напишите о проблеме"

@@ -7,7 +7,7 @@ import { SettingsListEl } from "./settingsListEl";
 import { About } from "./elements/about";
 import { FcAbout } from "react-icons/fc";
 import { ReportABug } from "./elements/reportAbug";
-import { PostSettings } from "./elements/post";
+import PostSettings from "./elements/postSettings";
 import { BsFillPostcardFill } from "react-icons/bs";
 
 interface props {

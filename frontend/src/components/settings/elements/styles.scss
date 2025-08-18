@@ -31,3 +31,11 @@
   font-size: 15px;
   width: 290px;
 }
+
+.postSettings {
+  .viewedAnonPostsEl {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

@@ -27,7 +27,7 @@ export function ChangePsw() {
 
   return (
     <div className="changePsw">
-      <p>ChangePsw</p>
+      <p>сменить пароль</p>
       <Input
         type="password"
         value={oldPsw}

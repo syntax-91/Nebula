@@ -3,7 +3,7 @@ import cs from "js-cookie";
 
 class UserStore {
   isAuth = Boolean(cs.get("isAuth_Nebula"));
-  isViewedAnonPosts = Boolean(cs.get("isViewedAnonPosts"));
+  isViewedAnonPosts = false;
 
   dataMap = {
     username: cs.get("username_Nebula"),
@@ -23,6 +23,14 @@ class UserStore {
   setDataMap(t: keyof typeof this.dataMap, v: string) {
     this.dataMap[t] = v;
     localStorage.setItem(`${t}_Nebula`, v);
+  }
+
+  toggleIsViewedAnonPosts() {
+    if (this.isViewedAnonPosts) {
+      this.isViewedAnonPosts = false;
+    } else {
+      this.isViewedAnonPosts = true;
+    }
   }
 
   constructor() {
