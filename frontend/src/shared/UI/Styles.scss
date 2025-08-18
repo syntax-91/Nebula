@@ -82,3 +82,42 @@
     border-left: 2px solid g.$borderAccent;
   }
 }
+
+/* Switcher */
+.Switcher {
+  position: relative;
+  width: 25px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+
+  .el1 {
+    height: 5px;
+    width: 100%;
+    border-radius: g.$radius;
+    background-color: g.$accentColor;
+  }
+
+  .el2 {
+    position: absolute;
+    left: 0;
+
+    width: 15px;
+    height: 15px;
+    background-color: g.$mainPrimary;
+    border-radius: g.$radius_lg;
+    margin-right: auto;
+  }
+
+  .el2_active {
+    position: absolute;
+    right: 0;
+
+    width: 15px;
+    height: 15px;
+    background-color: g.$mainPrimary;
+    border-radius: g.$radius_lg;
+    margin-right: auto;
+  }
+}
