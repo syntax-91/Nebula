@@ -7,6 +7,7 @@ import { createServer } from "http";
 import { Socket } from "./service/socket/socketService.js";
 import { QueryRouter } from "./routes/query.route.js";
 import { UserRouter } from "./routes/user.route.js";
+import { SpreadRouter } from "./routes/spread.route.js";
 
 const app = express();
 const PORT = 3000;
@@ -40,6 +41,8 @@ app.use("/post", PostRouter);
 app.use("/query", QueryRouter);
 
 app.use("/user", UserRouter);
+
+app.use("/spread", SpreadRouter);
 
 const run = async () => {
   try {

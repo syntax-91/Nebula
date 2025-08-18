@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { userdataService } from "../service/user/userdata.js";
-import { changePswService } from "../service/user/changeService.js";
+import { changePswService } from "../service/user/userChangeService.js";
 
 export const UserRouter = Router();
 

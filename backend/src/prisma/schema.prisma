@@ -83,3 +83,10 @@ model DislikedPost {
 
   @@id([username,postId])
 }
+
+model Bug {
+  id Int @id @default(autoincrement())
+
+  text String
+  ownerUsername String
+}

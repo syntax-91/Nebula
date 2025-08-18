@@ -6,6 +6,11 @@ interface IB {
   settingsBlockChildren: ReactNode;
 }
 
+export function handleClickSettingsListEl({ ...props }: IB) {
+  props.setIsOpenSettingsBlock(true);
+  props.setSettingsBlockChildren(props.settingsBlockChildren);
+}
+
 export function handleChangePsw({ ...props }: IB) {
   props.setIsOpenSettingsBlock(true);
   props.setSettingsBlockChildren(props.settingsBlockChildren);

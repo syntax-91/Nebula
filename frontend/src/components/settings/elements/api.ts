@@ -23,3 +23,25 @@ export async function changePswAPI({ ...props }: IChangePsw) {
     console.error(`ERROR > changePswAPI - ${err}}`);
   }
 }
+
+interface IReportABug {
+  text: string;
+  username: string;
+}
+
+export async function reportABugAPI({ ...props }: IReportABug) {
+  try {
+    const res = await axios.post(
+      `${serverUrl}/spread/reportABug/${props.username}/${props.text}`
+    );
+
+    console.log("report a bug res >> ", res.data);
+
+    return {
+      success: res.data.success,
+      msg: res.data.msg,
+    };
+  } catch (err) {
+    console.error(`ERROR > changePswAPI - ${err}}`);
+  }
+}
