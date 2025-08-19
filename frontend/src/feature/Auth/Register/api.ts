@@ -14,6 +14,8 @@ export async function RegisterAPI(data: IUserdataAuth, n: NavigateFunction) {
     if (res.data.success) {
       userStore.setIsAuth(true);
       userStore.setDataMap("username", data.username);
+      userStore.setDataMap("displayName", data.displayName || "");
+
       n("/");
     } else {
       modalStore.run(res.data.msg);

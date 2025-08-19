@@ -1,3 +1,5 @@
+import type { Ref } from "react";
+
 interface props {
   label?: string;
   bg?: "bgPrimary" | "bgNone";
@@ -8,6 +10,7 @@ interface props {
   className?: string;
 
   isLoading?: boolean;
+  ref?: Ref<HTMLButtonElement>;
 }
 
 export function Button({
@@ -18,9 +21,11 @@ export function Button({
   onClick,
   className,
   isLoading = false,
+  ...rest
 }: props) {
   return (
     <button
+      ref={rest.ref && rest.ref}
       onClick={onClick}
       type={type}
       disabled={disabled}

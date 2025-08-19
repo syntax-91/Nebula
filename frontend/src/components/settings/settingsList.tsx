@@ -9,6 +9,7 @@ import { FcAbout } from "react-icons/fc";
 import { ReportABug } from "./elements/reportAbug";
 import PostSettings from "./elements/postSettings";
 import { BsFillPostcardFill } from "react-icons/bs";
+import MyProfile from "./elements/myProfile";
 
 interface props {
   setIsOpenSettingsBlock: (e: SetStateAction<boolean>) => void;
@@ -29,7 +30,11 @@ export default function SettingsList({ ...props }: props) {
   return (
     <div className="settingsList">
       <SettingsListEl
-        onClick={() => {}}
+        onClick={() =>
+          handleClickSettingsListEl({
+            settingsBlockChildren: <MyProfile />,
+          })
+        }
         icon={<CgProfile size={30} />}
         label="мои профиль"
       />

@@ -39,3 +39,39 @@
     gap: 10px;
   }
 }
+
+.myProfile {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  .ava {
+    margin-bottom: 20px;
+    width: 140px;
+    height: 140px;
+
+    background-color: #111111;
+    border-radius: 50%;
+  }
+
+  .data {
+    .displayName,
+    .username,
+    .bio {
+      margin-top: 10px;
+      display: flex;
+      flex-flow: column;
+
+      span {
+        font-size: 14px;
+        margin: 0px 9px;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .myProfile {
+    flex-flow: column;
+  }
+}

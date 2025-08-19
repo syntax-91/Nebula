@@ -6,7 +6,10 @@ class UserStore {
   isViewedAnonPosts = Boolean(localStorage.getItem("isViewedAnonPosts"));
 
   dataMap = {
+    displayName: cs.get("displayName_Nebula"),
     username: cs.get("username_Nebula"),
+    bio: cs.get("bio_Nebula"),
+    ava: cs.get("ava_Nebula"),
   };
 
   setIsAuth(v: boolean) {

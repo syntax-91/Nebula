@@ -20,6 +20,10 @@ export async function LoginAPI(
     if (res.data.success) {
       userStore.setIsAuth(true);
       userStore.setDataMap("username", data.username);
+
+      userStore.setDataMap("displayName", res.data.additionalData.displayName);
+      userStore.setDataMap("bio", res.data.additionalData.bio);
+
       n("/");
     } else {
       modalStore.run(res.data.msg);

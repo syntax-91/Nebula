@@ -20,6 +20,8 @@ model User {
 
   displayName String?
   username String @unique
+  bio  String?
+
   password String
   createdAt DateTime @default(now())
   ava String

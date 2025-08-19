@@ -8,11 +8,17 @@ import { Socket } from "./service/socket/socketService.js";
 import { QueryRouter } from "./routes/query.route.js";
 import { UserRouter } from "./routes/user.route.js";
 import { SpreadRouter } from "./routes/spread.route.js";
+import { configDotenv } from "dotenv";
 
 const app = express();
 const PORT = 3000;
 
 const server = createServer(app);
+
+// env
+configDotenv({
+  path: "./.env",
+});
 
 // socket.io
 const io = new Server(server, {
