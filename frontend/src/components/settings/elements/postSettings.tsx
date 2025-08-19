@@ -7,12 +7,12 @@ function PostSettings() {
     <div className="postSettings">
       <h3>посты</h3>
 
-      <div className="viewedAnonPostsEl">
+      <div
+        className="isViewedAnonPostsEl"
+        onClick={() => userStore.toggleIsViewedAnonPosts()}
+      >
         <p>показать анонимные посты</p>
-        <Switcher
-          onClick={userStore.toggleIsViewedAnonPosts}
-          value={userStore.isViewedAnonPosts}
-        />
+        <Switcher value={userStore.isViewedAnonPosts} />
       </div>
     </div>
   );
