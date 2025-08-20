@@ -118,7 +118,7 @@ export default function MyProfile() {
           type="file"
           className="none"
         />
-        <Button onClick={handleAddAva} label="загрузить" />
+        <Button disabled={true} onClick={handleAddAva} label="загрузить" />
       </div>
 
       <div className="data">
