@@ -8,19 +8,12 @@ interface IUserdata {
   setLastPostId: number;
 }
 
-export async function userDataAPI({
-  username,
-  setPosts,
-  setLastPostId,
-}: IUserdata) {
+export async function userDataAPI({ username }: IUserdata) {
   try {
     const res = await axios.get(`${serverUrl}/user/data/${username}`);
-
-    setPosts(res.data.posts || []);
-    ///////////////////////////////////////
-    const lastPost = res.data.posts.at(-1);
-
-    setLastPostId(lastPost.id);
+    if (res.data.success) {
+      return res.data.res;
+    }
   } catch (err) {
     console.error("ERROR - func QueryAPI >> ", err);
   }

@@ -1,25 +1,23 @@
 import { makeAutoObservable } from "mobx";
 
 class ModalStore {
-    
+  isOpenModal = false;
+  closing = false;
 
-    isOpenModal = false
-    closing = false
+  msg = "";
 
-    msg = ''
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    constructor() {
-        makeAutoObservable(this)
-    }
+  run(msg: string) {
+    this.isOpenModal = true;
+    this.msg = msg;
+  }
 
-    run(msg:string){
-        this.isOpenModal = true
-        this.msg = msg
-    }
-
-    close(){
-        this.isOpenModal = false;
-    }
+  close() {
+    this.isOpenModal = false;
+  }
 }
 
-export const modalStore = new ModalStore()
+export const modalStore = new ModalStore();

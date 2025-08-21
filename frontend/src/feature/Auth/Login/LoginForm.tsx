@@ -45,6 +45,7 @@ export default function LoginForm() {
 
       <div>
         <input
+          type="password"
           placeholder="Введите пароль.."
           className="Input tr"
           {...register("password", pswSchema)}

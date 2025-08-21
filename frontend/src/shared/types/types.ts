@@ -7,7 +7,9 @@ export interface IUserdataAuth {
 
 export interface IPosts {
   ownerUsername: string;
+
   text: string;
+
   lastPostId: number;
   paginationFunc: () => void;
   createdAt: string;

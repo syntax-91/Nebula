@@ -10,6 +10,7 @@ import { ReportABug } from "./elements/reportAbug";
 import PostSettings from "./elements/postSettings";
 import { BsFillPostcardFill } from "react-icons/bs";
 import MyProfile from "./elements/myProfile";
+import { FaUser, FaUserCircle } from "react-icons/fa";
 
 interface props {
   setIsOpenSettingsBlock: (e: SetStateAction<boolean>) => void;
@@ -35,7 +36,7 @@ export default function SettingsList({ ...props }: props) {
             settingsBlockChildren: <MyProfile />,
           })
         }
-        icon={<CgProfile size={30} />}
+        icon={<FaUserCircle size={30} />}
         label="мои профиль"
       />
 

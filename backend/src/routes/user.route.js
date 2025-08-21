@@ -12,7 +12,7 @@ import { UploadToImgService } from "../service/uploadToImg.js";
 export const UserRouter = Router();
 
 // user/data
-UserRouter.get("data/:username", (req, res) => {
+UserRouter.get("/data/:username", (req, res) => {
   const { username } = req.params;
   console.log("запрос на userdata");
 

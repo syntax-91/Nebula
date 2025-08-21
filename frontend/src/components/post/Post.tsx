@@ -75,6 +75,7 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
         <div className="userData">
           <div className="ava"></div>
           <div className="tochka"></div>
+
           <p className="username">@{ownerUsername}</p>
           <div className="tochka"></div>
           <p className="date">{`${formattedDate}`}</p>

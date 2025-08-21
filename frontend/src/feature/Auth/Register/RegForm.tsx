@@ -53,6 +53,7 @@ export default function RegisterForm() {
 
       <div>
         <input
+          type="password"
           placeholder="пароль"
           className="Input"
           {...register("password", pswSchema)}

@@ -9,6 +9,7 @@ export async function postsAPI() {
     postStore.setPosts(res.data.posts);
 
     const lastPostId = res.data.posts.at(-1);
+    console.info("posts >> ", res.data.posts);
 
     //console.log("lastPostId >> ", lastPostId.id);
     postStore.setLastPostId(lastPostId.id);

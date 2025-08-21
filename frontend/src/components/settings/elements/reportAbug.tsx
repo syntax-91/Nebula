@@ -35,7 +35,7 @@ export function ReportABug() {
         onClick={handleSubmit}
       />
 
-      <p className="text">{resMsg ? resMsg : ""}</p>
+      <p className="tr3 text">{resMsg ? resMsg : ""}</p>
     </div>
   );
 }
