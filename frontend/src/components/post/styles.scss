@@ -44,20 +44,18 @@
 /* Post */
 
 .Post {
-  border: 1px solid g.$borderAccent;
-  padding: 5px 5px;
+  border: 1px solid rgb(17, 17, 17) /*g.$borderAccent*/;
+  padding: 5px;
+  margin: 5px 0px;
 
   &:hover {
     border: 1px solid g.$hoverColorBorder;
   }
 
-  margin: 10px 0px;
-
   .b1 {
     display: flex;
     justify-content: space-between;
 
-    width: 95%;
     margin: auto;
     align-items: center;
 
@@ -134,7 +132,7 @@
 
   .content {
     margin: 0;
-    padding: 5px 10px;
+    padding: 10px;
     word-break: break-all;
   }
 

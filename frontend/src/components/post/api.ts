@@ -9,7 +9,6 @@ export async function postsAPI() {
     postStore.setPosts(res.data.posts);
 
     const lastPostId = res.data.posts.at(-1);
-    console.info("posts >> ", res.data.posts);
 
     //console.log("lastPostId >> ", lastPostId.id);
     postStore.setLastPostId(lastPostId.id);
@@ -31,15 +30,11 @@ export async function deletePostAPI(id: number) {
 
 export async function likePostAPI(id: number, type: "liked" | "unlike") {
   try {
-    console.log("handleLike - deletePostAPI ");
-
     const res = await axios.post(`${serverUrl}/post/like`, {
       postId: id,
       username: userStore.dataMap.username,
       type: type,
     });
-
-    console.log("res >> ", res.data);
 
     console.info(res.data);
     return res.data.success;
@@ -53,15 +48,11 @@ export async function dislikePostAPI(
   type: "disliked" | "unDislike"
 ) {
   try {
-    console.log("handleDislike ");
-
     const res = await axios.post(`${serverUrl}/post/dislike`, {
       postId: id,
       username: userStore.dataMap.username,
       type: type,
     });
-
-    console.log("res >> ", res.data);
 
     console.info(res.data);
     return res.data.success;
@@ -72,7 +63,7 @@ export async function dislikePostAPI(
 
 export async function paginationPostsAPI(lastPostId: number, limit: number) {
   try {
-    console.log("pagination");
+    console.log("pagination global posts");
 
     const res = await axios.get(
       `${serverUrl}/post/pagination/${lastPostId}/${limit}`

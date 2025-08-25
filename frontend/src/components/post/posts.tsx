@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./styles.scss";
 import { socket } from "../../app/socketIo";
 import type { IPosts } from "../../shared/types/types";
@@ -22,14 +22,14 @@ function Posts() {
   }, []);
 
   useEffect(() => {
-    postStore.FetchLikedPosts();
-    postStore.FetchDislikedPosts();
-    postsAPI();
-  }, []);
+    if (postStore.isFetched !== true) {
+      postStore.FetchLikedPosts();
+      postStore.FetchDislikedPosts();
+      postsAPI();
 
-  useEffect(() => {
-    console.info("изменение в postStore/posts");
-  }, [postStore.posts]);
+      postStore.setIsFetched(true);
+    }
+  }, []);
 
   return (
     <div className="posts">
