@@ -5,9 +5,12 @@ import { RegisterAPI } from "./api";
 import { displayNameSchema, pswSchema, usernameSchema } from "../schema";
 import { Button } from "../../../shared/UI/Button";
 import "../styles.scss";
+import { useState } from "react";
 
 export default function RegisterForm() {
   const n = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -16,7 +19,10 @@ export default function RegisterForm() {
   } = useForm<IUserdataAuth>({ mode: "onChange" });
 
   const submit = (data: IUserdataAuth) => {
-    RegisterAPI(data, n);
+    setIsLoading(true);
+    RegisterAPI(data, n).then(() => {
+      setIsLoading(false);
+    });
   };
 
   const handleLogin = () => {
@@ -64,7 +70,12 @@ export default function RegisterForm() {
         )}
       </div>
 
-      <Button type="submit" label="регистрация" className="btn" />
+      <Button
+        isLoading={isLoading}
+        type="submit"
+        label="регистрация"
+        className="btn"
+      />
 
       <p>или</p>
 

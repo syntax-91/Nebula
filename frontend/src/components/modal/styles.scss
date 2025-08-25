@@ -14,24 +14,24 @@
 }
 
 .modal {
-  border: 1px solid g.$borderPrimary;
+  border: 1px solid g.$borderAccent;
   border-radius: g.$radius_md;
 
-  padding: 5px 5px 5px 10px;
+  padding: 13px 25px;
   width: fit-content;
   height: fit-content;
 
-  background-color: g.$bg;
+  background-color: g.$b;
 
   display: flex;
   align-items: center;
-  gap: 20px;
-
-  .closeEl {
-    width: 80px;
-  }
+  gap: 10px;
 
   .closeEl:hover {
-    opacity: 0.8;
+    opacity: 0.7;
+  }
+
+  .closeEl:active {
+    opacity: 0.4;
   }
 }

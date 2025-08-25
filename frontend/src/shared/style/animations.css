@@ -87,7 +87,20 @@
   }
 }
 
-/* rotate 360 infinine */
+/* rotate 360  */
+
+.rtl_r40 {
+  animation: r360 0.3s ease-in-out forwards;
+}
+
+@keyframes r360 {
+  from {
+    transform: rotate(-40deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 
 .r360_inf {
   animation: r360_inf 0.5s linear infinite;

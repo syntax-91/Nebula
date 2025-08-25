@@ -19,6 +19,8 @@ import {
   handleUnDislike,
   handleUnLikedPost,
 } from "./handlers";
+import { ActionsPost } from "./actionsPost";
+import { MenuPost } from "./menuPost";
 
 function Post({ ownerUsername, text, ...rest }: IPosts) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -75,15 +77,14 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
         {/* userData */}
         <div className="userData">
           <div className="ava"></div>
-          <div className="tochka"></div>
 
-          <div className="data">
-            <p className="username"></p>
+          <div className="dataPost">
+            <p className="displayName"></p>
+
             <p className="username">@{ownerUsername}</p>
+            <div className="tochka"></div>
+            <p className="date">{`${formattedDate}`}</p>
           </div>
-
-          <div className="tochka"></div>
-          <p className="date">{`${formattedDate}`}</p>
         </div>
 
         {/* menuIcon */}
@@ -103,99 +104,28 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
 
       {/* menu */}
       {isOpenMenu == true && (
-        <div className={`menu tr3 ${isClosingMenu ? "fo btt" : "fn"}`}>
-          <Button label="пожаловаться" className="el menuEl tr" />
-
-          <Button
-            onClick={() => handleCopyLinkPost(rest.id)}
-            label="скопировать ссылку"
-            className="el tr menuEl"
-          />
-
-          {ownerUsername == userStore.dataMap.username && (
-            <Button
-              onClick={() => handleDeletePost(rest.id)}
-              label="удалить"
-              className="el tr menuEl"
-            />
-          )}
-        </div>
+        <MenuPost
+          isClosingMenu={isClosingMenu}
+          ownerUsername={ownerUsername}
+          postId={rest.id}
+        />
       )}
 
       <p style={{ whiteSpace: "pre-wrap" }} className="content">
         {text}
       </p>
 
-      <div className="actions">
-        {/* like */}
-        <div className="likeC">
-          {!isLiked && (
-            <BiLike
-              className="likeEl"
-              size={20}
-              color="#444"
-              onClick={() =>
-                handleLikedPost({
-                  id: rest.id,
-                  setIsLiked: setIsLiked,
-                  setLikedByState: setLikedByState,
-                })
-              }
-            />
-          )}
-
-          {isLiked && (
-            <BiSolidLike
-              className="unlikeEl"
-              size={20}
-              color="#d9d8d8"
-              onClick={() =>
-                handleUnLikedPost({
-                  id: rest.id,
-                  setIsDisliked: setIsLiked,
-                  setDislikedByState: setLikedByState,
-                })
-              }
-            />
-          )}
-
-          <div className="likedByCount">{likedByState}</div>
-        </div>
-
-        {/* dislike */}
-        <div className="dislikeC">
-          {!isDisliked && (
-            <AiOutlineDislike
-              className="likeEl"
-              size={20}
-              color="#444"
-              onClick={() =>
-                handleDislike({
-                  id: rest.id,
-                  setIsDisliked: setIsDisliked,
-                  setDislikedByState: setDislikedByState,
-                })
-              }
-            />
-          )}
-          {isDisliked && (
-            <AiFillDislike
-              className="likeEl"
-              size={20}
-              color="#d9d8d8"
-              onClick={() =>
-                handleUnDislike({
-                  id: rest.id,
-                  setIsDisliked: setIsDisliked,
-                  setDislikedByState: setDislikedByState,
-                })
-              }
-            />
-          )}
-
-          <div className="dislikedByCount">{dislikedByState}</div>
-        </div>
-      </div>
+      <ActionsPost
+        isLiked={isLiked}
+        likedByState={likedByState}
+        setIsLiked={setIsLiked}
+        setLikedByState={setLikedByState}
+        isDisliked={isDisliked}
+        dislikedByState={dislikedByState}
+        setIsDisliked={setIsDisliked}
+        setDislikedByState={setDislikedByState}
+        postId={rest.id}
+      />
     </div>
   );
 }

@@ -17,20 +17,24 @@
   border: 1px solid g.$borderPrimary;
 
   width: fit-content;
-  padding: 0px 20px;
+  padding: 2px 20px;
 
-  margin-top: 5px;
+  margin-top: 3px;
 
   border-radius: g.$radius_md;
 
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 
   .elIcon {
     width: 30px;
     height: 30px;
     border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   ._ {
@@ -60,6 +64,10 @@
     border: 1px solid g.$borderAccent;
     padding: 15px 25px;
     border-radius: g.$radius_md;
+
+    h3 {
+      margin: 0;
+    }
 
     .back {
       font-family: sans-serif;

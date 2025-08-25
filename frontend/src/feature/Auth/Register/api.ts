@@ -18,6 +18,8 @@ export async function RegisterAPI(data: IUserdataAuth, n: NavigateFunction) {
     } else {
       modalStore.run(res.data.msg);
     }
+
+    return res.data;
   } catch (err) {
     console.error("ERROR > REGISTER > ", err);
   }

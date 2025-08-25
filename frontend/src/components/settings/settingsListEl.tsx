@@ -13,7 +13,7 @@ export function SettingsListEl({ ...props }: props) {
     <div onClick={props.onClick} className="settingsListEl el cp">
       <div className="elIcon">{props.icon}</div>
       <p className="label">{props.label}</p>
-      <GoChevronRight className="_" />
+      <GoChevronRight size={20} className="_" />
     </div>
   );
 }

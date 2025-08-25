@@ -28,11 +28,15 @@ function UserCard({ username, bio, displayName }: props) {
 
         <div className="actions"></div>
 
-        <div className="description">
-          <p>описания:</p>
+        {bio.length ? (
+          <div className="description">
+            <p>описания:</p>
 
-          <div className="text">{bio}</div>
-        </div>
+            <div className="text">{bio}</div>
+          </div>
+        ) : (
+          ""
+        )}
 
         <Button onClick={handle} label="подписаться" />
       </div>

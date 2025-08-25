@@ -13,7 +13,7 @@ export default function HomePage() {
   const n = useNavigate();
 
   useEffect(() => {
-    if (!userStore.isAuth) {
+    if (userStore.isAuth != true) {
       n(`/login`);
     }
   }, []);

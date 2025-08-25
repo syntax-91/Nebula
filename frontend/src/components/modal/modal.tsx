@@ -1,5 +1,5 @@
+import { IoClose } from "react-icons/io5";
 import { modalStore } from "../../app/store/modalStore";
-import { Button } from "../../shared/UI/Button";
 import "./styles.scss";
 
 export function Modal() {
@@ -12,7 +12,11 @@ export function Modal() {
       <div className="modal up">
         <div>{modalStore.msg}</div>
 
-        <Button className="closeEl" onClick={handleClose} label="закрыть" />
+        <IoClose
+          className="closeEl rtl_r40 cp"
+          onClick={handleClose}
+          size={25}
+        />
       </div>
     </div>
   );

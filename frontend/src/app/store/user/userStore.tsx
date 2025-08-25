@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import cs from "js-cookie";
 
 class UserStore {
-  isAuth = Boolean(cs.get("isAuth_Nebula"));
+  isAuth = cs.get("isAuth_Nebula") || false;
   isViewedAnonPosts = Boolean(localStorage.getItem("isViewedAnonPosts"));
 
   dataMap = {

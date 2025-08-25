@@ -43,7 +43,7 @@ export function AppRouter() {
         <Route
           path={routesConfig.settings.path}
           element={
-            <Suspense fallback={<p>загрузка</p>}>
+            <Suspense fallback={<Loader />}>
               <routesConfig.settings.component />
             </Suspense>
           }
