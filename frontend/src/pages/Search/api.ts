@@ -8,8 +8,6 @@ export async function QueryAPI(query: string, type: TType) {
       `http://192.168.100.108:3000/query/${query}/${type}`
     );
 
-    console.info("ответ от сервера >> ", res.data);
-
     if (res.data.success) {
       return res.data.res;
     }

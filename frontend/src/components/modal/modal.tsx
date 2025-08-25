@@ -8,11 +8,11 @@ export function Modal() {
   };
 
   return (
-    <div className="modalC center">
+    <div className="modalC">
       <div className="modal up">
         <div>{modalStore.msg}</div>
 
-        <Button onClick={handleClose} className="closeEl" label="закрыть" />
+        <Button className="closeEl" onClick={handleClose} label="закрыть" />
       </div>
     </div>
   );

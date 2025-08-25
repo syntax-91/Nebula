@@ -1,36 +1,33 @@
-import { IoChevronBack } from 'react-icons/io5'
-import './style.scss'
-import { useNavigate } from 'react-router-dom'
-import type { ReactNode } from 'react'
+import { IoChevronBack } from "react-icons/io5";
+import "./style.scss";
+import { useNavigate } from "react-router-dom";
+import type { ReactNode } from "react";
 
 interface props {
-    isBack?: boolean
-    ch:ReactNode
+  isBack?: boolean;
+  ch: ReactNode;
+  isChWFull?: boolean;
 }
 
-export function HeaderPage({ch, isBack=false}:props){
+export function HeaderPage({ ch, isBack = false, isChWFull }: props) {
+  const n = useNavigate();
 
-    const n = useNavigate()
+  const handleBack = () => {
+    n(-1);
+  };
 
-    const handleBack = () => {
-        n(-1)
-    }
-
-
-    return (
+  return (
     <header className="headerSearch ttb">
-
-        {isBack && 
+      {isBack && (
         <div onClick={handleBack} className="cp block back">
-            <IoChevronBack />
-            <span>Назад</span>
-        </div>}
-
-        <div className="children">
-            {ch}
+          <IoChevronBack />
+          <span>Назад</span>
         </div>
+      )}
 
+      <div style={{ width: isChWFull ? "100%" : "" }} className="children">
+        {ch}
+      </div>
     </header>
-    )
-
+  );
 }

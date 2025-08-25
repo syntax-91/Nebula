@@ -6,6 +6,7 @@ import { paginationPostsAPI, postsAPI } from "./api";
 import { postStore } from "../../app/store/post/postStore";
 import { observer } from "mobx-react-lite";
 import Post from "./Post";
+import { userStore } from "../../app/store/user/userStore";
 
 function Posts() {
   useEffect(() => {
@@ -22,10 +23,10 @@ function Posts() {
   }, []);
 
   useEffect(() => {
-    if (postStore.isFetched !== true) {
+    if (postStore.isFetched !== true && userStore.isAuth) {
       postStore.FetchLikedPosts();
       postStore.FetchDislikedPosts();
-      postsAPI();
+      postStore.FetchPosts();
 
       postStore.setIsFetched(true);
     }

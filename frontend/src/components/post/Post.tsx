@@ -42,13 +42,14 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
     const isLikedPost = postStore.likedPosts.some(
       (post) => post.postId === rest.id
     );
+    console.log(isLiked);
     setIsLiked(isLikedPost);
 
     const isDislikedPost = postStore.dislikedPosts.some(
       (post) => post.postId === rest.id
     );
     setIsDisliked(isDislikedPost);
-  }, [postStore.likedPosts, postStore.dislikedPosts]);
+  }, []);
 
   // pagination
   useEffect(() => {

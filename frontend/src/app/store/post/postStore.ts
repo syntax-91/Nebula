@@ -47,7 +47,6 @@ class PostStoreClass {
 
   ////
   setDislikedPosts(posts: ILikedPosts[]) {
-    console.log("likedPosts >> ", posts);
     this.dislikedPosts = posts;
   }
 
@@ -59,14 +58,25 @@ class PostStoreClass {
     this.dislikedPosts.filter((post) => post.postId !== id);
   }
 
+  async FetchPosts() {
+    try {
+      const res = await axios.get(`${serverUrl}/post/lastPosts`);
+
+      const lastPost = (this.lastPostId = res.data.posts.at(-1));
+      this.lastPostId = lastPost.id;
+
+      this.setPosts(res.data.posts);
+    } catch (err) {
+      console.error("ERROR - api.ts - func likedPosts, err > ", err);
+    }
+  }
+
   async FetchLikedPosts() {
     try {
       const res = await axios.get(
         `${serverUrl}/post/likedPosts/${userStore.dataMap.username}`
       );
       this.setLikedPosts(res.data.res);
-
-      console.info("likedPostsAPI >> ", res.data);
     } catch (err) {
       console.error("ERROR - api.ts - func likedPosts, err > ", err);
     }
@@ -78,8 +88,6 @@ class PostStoreClass {
         `${serverUrl}/post/dislikedPosts/${userStore.dataMap.username}`
       );
       this.setDislikedPosts(res.data.res);
-
-      console.info("dislikedPostsAPI >> ", res.data);
     } catch (err) {
       console.error("ERROR - api.ts - func likedPosts, err > ", err);
     }

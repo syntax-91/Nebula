@@ -34,7 +34,16 @@ export default function SearchPage() {
 
   return (
     <div>
-      <HeaderPage ch={<Input value={query} onChange={(e) => setQuery(e)} />} />
+      <HeaderPage
+        isChWFull={true}
+        ch={
+          <Input
+            className="w_full"
+            value={query}
+            onChange={(e) => setQuery(e)}
+          />
+        }
+      />
 
       <div className="resContainer">
         {/* res */}

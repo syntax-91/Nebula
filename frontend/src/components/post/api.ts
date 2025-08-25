@@ -3,20 +3,6 @@ import { postStore } from "../../app/store/post/postStore";
 import { userStore } from "../../app/store/user/userStore";
 import { serverUrl } from "../../shared/serverUrl";
 
-export async function postsAPI() {
-  try {
-    const res = await axios.get(`${serverUrl}/post/lastPosts`);
-    postStore.setPosts(res.data.posts);
-
-    const lastPostId = res.data.posts.at(-1);
-
-    //console.log("lastPostId >> ", lastPostId.id);
-    postStore.setLastPostId(lastPostId.id);
-  } catch (err) {
-    console.error("ERROR - api.ts - func postsAPI, err > ", err);
-  }
-}
-
 export async function deletePostAPI(id: number) {
   try {
     const res = await axios.post(`${serverUrl}/post/deletePost`, {

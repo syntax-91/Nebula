@@ -14,7 +14,6 @@ export async function LoginAPI(
   try {
     const res = await axios.post(`${serverUrl}/auth/login`, data);
 
-    console.info("ответ >> ", res.data);
     setIsLoading(false);
 
     if (res.data.success) {

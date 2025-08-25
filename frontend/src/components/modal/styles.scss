@@ -1,24 +1,31 @@
 @use "../../shared/style/main.scss" as g;
 
 .modalC {
-  width: 100%;
+  width: 100vw;
+
   position: fixed;
   left: 0;
-  bottom: 55px;
+  bottom: 30px;
+
+  display: flex;
+  justify-content: center;
+
+  backdrop-filter: 15px;
 }
 
 .modal {
   border: 1px solid g.$borderPrimary;
-  padding: 7px 13px;
+  border-radius: g.$radius_md;
+
+  padding: 5px 5px 5px 10px;
+  width: fit-content;
+  height: fit-content;
 
   background-color: g.$bg;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-
-  border-radius: g.$radius_md;
+  gap: 20px;
 
   .closeEl {
     width: 80px;

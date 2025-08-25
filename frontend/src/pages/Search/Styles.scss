@@ -66,10 +66,10 @@
       border-radius: 50%;
       height: 50px;
     }
-  }
 
-  input {
-    background-color: red;
+    &:hover {
+      border: 1px solid g.$mainPrimary;
+    }
   }
 
   h2 {

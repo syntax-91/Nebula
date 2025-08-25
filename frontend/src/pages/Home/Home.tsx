@@ -18,7 +18,7 @@ export default function HomePage() {
     }
   }, []);
 
-  const isM = useMediaQuery({ maxWidth: 700 });
+  const isM = useMediaQuery({ maxWidth: 750 });
 
   return (
     <div className="layOut">

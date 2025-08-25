@@ -7,6 +7,7 @@ interface props {
   value?: string;
   onChange?: (e: SetStateAction<string>) => void;
   ref?: Ref<HTMLInputElement>;
+  className?: string;
 }
 
 export function Input({ type, placeholder = "Enter text..", ...rest }: props) {
@@ -15,7 +16,7 @@ export function Input({ type, placeholder = "Enter text..", ...rest }: props) {
       ref={rest.ref && rest.ref}
       value={rest.value}
       onChange={(e) => rest.onChange && rest.onChange(e.target.value)}
-      className="Input tr"
+      className={`Input tr ${rest.className}`}
       type={type}
       placeholder={placeholder}
     />

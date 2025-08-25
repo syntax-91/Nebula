@@ -9,8 +9,6 @@ export async function RegisterAPI(data: IUserdataAuth, n: NavigateFunction) {
   try {
     const res = await axios.post(`${serverUrl}/auth/register`, data);
 
-    console.info("ответ >> ", res.data);
-
     if (res.data.success) {
       userStore.setIsAuth(true);
       userStore.setDataMap("username", data.username);
@@ -21,6 +19,6 @@ export async function RegisterAPI(data: IUserdataAuth, n: NavigateFunction) {
       modalStore.run(res.data.msg);
     }
   } catch (err) {
-    console.error("ERROR > LOGIN > ", err);
+    console.error("ERROR > REGISTER > ", err);
   }
 }
