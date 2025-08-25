@@ -12,6 +12,7 @@ export interface IPosts {
 
   lastPostId: number;
   paginationFunc: () => void;
+
   createdAt: string;
   _count?: { likedBy: number; dislikedBy: number };
   id: number;

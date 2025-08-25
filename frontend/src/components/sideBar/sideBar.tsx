@@ -20,7 +20,7 @@ export function SideBar() {
         {/* Home */}
         <div onClick={() => handleNavigate("/")} className="el sideBarEl cp">
           {l.pathname == "/" ? <GoHomeFill size={30} /> : <GoHome size={30} />}
-          <p>Home</p>
+          <p>главная</p>
         </div>
 
         {/* Search */}
@@ -33,7 +33,7 @@ export function SideBar() {
           ) : (
             <CiSearch size={30} />
           )}
-          <p>Search</p>
+          <p>поиск</p>
         </div>
 
         {/* Noti */}
@@ -43,7 +43,7 @@ export function SideBar() {
           ) : (
             <IoIosNotificationsOutline size={30} />
           )}
-          <p>Notifications</p>
+          <p>уведомления</p>
         </div>
 
         {/* Settings */}
@@ -52,13 +52,13 @@ export function SideBar() {
           className="el sideBarEl cp"
         >
           <CiSettings size={30} />
-          <p>Settings</p>
+          <p>настройки</p>
         </div>
 
         {/* Logout */}
         <div onClick={() => logOutU(n)} className="el sideBarEl cp">
           <CiLogout size={30} />
-          <p>Logout</p>
+          <p>выйти</p>
         </div>
       </div>
     </div>

@@ -13,7 +13,9 @@ export async function lastPostsService() {
         text: true,
         ownerUsername: true,
         createdAt: true,
-        owner: true,
+        owner: {
+          select: { displayName: true, bio: true },
+        },
 
         _count: {
           select: {
