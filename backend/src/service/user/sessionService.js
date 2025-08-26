@@ -1,24 +1,25 @@
 import { compare } from "bcryptjs";
 import { db } from "../db.js";
 
-export async function loginService(data) {
+export async function sessionService(sHash, password) {
   try {
     const res = await db.user.findFirst({
       where: {
-        username: data.username,
+        sHash: sHash,
       },
     });
 
-    if (res?.username !== data.username) {
+    if (!res?.sHash) {
       console.log("пользователь не найдено");
 
       return {
         success: false,
         msg: "пользователь не найдено",
+        additionalData: "",
       };
     }
 
-    const isValidPSW = await compare(data.password, res.password);
+    const isValidPSW = await compare(password, res.password);
 
     if (isValidPSW) {
       console.log("добро пожаловать!");
@@ -26,7 +27,6 @@ export async function loginService(data) {
       return {
         success: true,
         msg: "добро пожаловать!",
-        sHash: res.sHash,
 
         additionalData: {
           displayName: res.displayName,
@@ -39,8 +39,9 @@ export async function loginService(data) {
     return {
       success: false,
       msg: "неправильные данные",
+      additionalData: "",
     };
   } catch (err) {
-    console.log("ERROR - loginService - func loginService >> ", err);
+    console.log("ERROR - sessionService - func loginService >> ", err);
   }
 }

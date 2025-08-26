@@ -5,8 +5,11 @@ import "./style.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 import { logOutU } from "../../shared/utils/logout";
 import { IoSearchCircle } from "react-icons/io5";
+import { userStore } from "../../app/store/user/userStore";
+import { SiAuthelia } from "react-icons/si";
+import { observer } from "mobx-react-lite";
 
-export function SideBar() {
+function SideBar() {
   const n = useNavigate();
   const l = useLocation();
 
@@ -56,11 +59,30 @@ export function SideBar() {
         </div>
 
         {/* Logout */}
-        <div onClick={() => logOutU(n)} className="el sideBarEl cp">
-          <CiLogout size={30} />
-          <p>выйти</p>
-        </div>
+        {userStore.isAuth ? (
+          <div onClick={() => logOutU()} className="el sideBarEl cp">
+            <CiLogout size={30} />
+            <p>выйти</p>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {/* Auth */}
+        {!userStore.isAuth ? (
+          <div
+            onClick={() => handleNavigate("/login")}
+            className="el sideBarEl cp"
+          >
+            <SiAuthelia size={30} />
+            <p>вход</p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
 }
+
+export default observer(SideBar);

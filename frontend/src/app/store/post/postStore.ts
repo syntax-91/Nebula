@@ -72,6 +72,7 @@ class PostStoreClass {
   }
 
   async FetchLikedPosts() {
+    if (userStore.isAuth !== true) return;
     try {
       const res = await axios.get(
         `${serverUrl}/post/likedPosts/${userStore.dataMap.username}`
@@ -83,6 +84,7 @@ class PostStoreClass {
   }
 
   async FetchDislikedPosts() {
+    if (userStore.isAuth !== true) return;
     try {
       const res = await axios.get(
         `${serverUrl}/post/dislikedPosts/${userStore.dataMap.username}`

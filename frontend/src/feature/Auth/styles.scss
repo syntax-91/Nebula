@@ -48,3 +48,16 @@
     font-size: 13px;
   }
 }
+
+.sessionForm {
+  padding: 20px;
+  border-radius: g.$radius_md;
+
+  h3 {
+    text-align: center;
+  }
+
+  .btn {
+    margin-top: 10px;
+  }
+}

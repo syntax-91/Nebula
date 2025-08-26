@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { loginService } from "../service/user/loginService.js";
 import { addUserService } from "../service/user/addUserService.js";
+import { sessionService } from "../service/user/sessionService.js";
 
 export const AuthRouter = Router();
 
@@ -14,6 +15,8 @@ AuthRouter.post("/login", async (req, res) => {
     res.json({
       success: e.success,
       msg: e.msg,
+      sHash: e.sHash,
+
       additionalData: e.additionalData,
     });
   });
@@ -29,6 +32,25 @@ AuthRouter.post("/register", async (req, res) => {
     res.json({
       success: e.success,
       msg: e.msg,
+      sHash: e.sHash,
+
+      additionalData: e.additionalData,
+    });
+  });
+});
+
+// auth/session
+AuthRouter.post("/session/:sHash/:password", async (req, res) => {
+  const { sHash, password } = req.params;
+
+  console.log("запрос на auth/session, data >>  ", sHash, password);
+
+  sessionService(sHash, password).then((e) => {
+    res.json({
+      success: e.success,
+      msg: e.msg,
+
+      additionalData: e.additionalData,
     });
   });
 });

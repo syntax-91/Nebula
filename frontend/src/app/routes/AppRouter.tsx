@@ -4,6 +4,7 @@ import Home from "../../pages/Home/Home";
 import { Suspense } from "react";
 import Main from "../../components/main/Main";
 import { Loader } from "../../shared/UI/Loader";
+import SessionPage from "../../pages/Session/Session";
 
 export function AppRouter() {
   return (

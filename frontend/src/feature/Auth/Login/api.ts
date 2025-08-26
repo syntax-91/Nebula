@@ -17,8 +17,9 @@ export async function LoginAPI(
     setIsLoading(false);
 
     if (res.data.success) {
-      userStore.setIsAuth(true);
-      userStore.setDataMap("username", data.username);
+      userStore.setSHash(res.data.sHash);
+
+      userStore.setDataMap("username", res.data.additionalData.username);
 
       userStore.setDataMap("displayName", res.data.additionalData.displayName);
       userStore.setDataMap("bio", res.data.additionalData.bio);

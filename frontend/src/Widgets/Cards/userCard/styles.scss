@@ -1,55 +1,52 @@
-@use '../../../shared/style/main.scss' as g;
+@use "../../../shared/style/main.scss" as g;
 
-@media (min-width:700px) {
-    .c {
-        border: 1px solid g.$borderPrimary;
-    }
+@media (min-width: 700px) {
+  .c {
+    border: 1px solid g.$borderPrimary;
+  }
 }
 
 .c {
-    
+  border-radius: g.$radius_md;
+  width: 400px;
+  padding: 20px;
+
+  .b1 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 10px;
+
+    .ava {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: #333;
+    }
+
+    .displayName {
+      font-size: 18px;
+      color: #b8b1b1;
+    }
+
+    .username {
+      font-size: 15px;
+      font-family: "Courier New", Courier, monospace;
+    }
+  }
+
+  .description {
+    margin: 10px 0px;
+    /*border: 1px solid g.$borderPrimary;*/
     border-radius: g.$radius_md;
-    width: 400px;
-    padding: 20px;
-    
-    .b1 {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+    padding: 5px 0px;
 
-        .ava {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: #333;
-        }
-
-        .displayName {
-            font-size: 18px;
-            color: #b8b1b1;
-        }
-
-        .username {
-            font-size: 15px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
+    p {
+      margin: 2px;
     }
 
-    .description {
-        
-        margin: 10px 0px;
-        /*border: 1px solid g.$borderPrimary;*/
-        border-radius: g.$radius_md;
-        padding: 5px 0px;
-
-        p {
-            margin: 2px;
-        }
-
-        .text {
-            
-            padding: 0px 10px;
-        }
+    .text {
+      padding: 0px 10px;
     }
+  }
 }

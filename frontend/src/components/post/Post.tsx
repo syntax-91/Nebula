@@ -2,25 +2,14 @@ import { IoIosMore } from "react-icons/io";
 import type { IPosts } from "../../shared/types/types";
 import "./styles.scss";
 import { useEffect, useState } from "react";
-import { userStore } from "../../app/store/user/userStore";
 import { observer } from "mobx-react-lite";
 import { postStore } from "../../app/store/post/postStore";
-import { BiLike, BiSolidLike } from "react-icons/bi";
-import { AiFillDislike, AiOutlineDislike } from "react-icons/ai";
-import { Button } from "../../shared/UI/Button";
+
 import { useInView } from "react-intersection-observer";
 import { format, isThisYear } from "date-fns";
-import {
-  handleCopyLinkPost,
-  handleDeletePost,
-  handleDislike,
-  handleLikedPost,
-  handleToggleIsOpenMenu,
-  handleUnDislike,
-  handleUnLikedPost,
-} from "./handlers";
 import { ActionsPost } from "./actionsPost";
 import { MenuPost } from "./menuPost";
+import { handleToggleIsOpenMenu } from "./handlers";
 
 function Post({ ownerUsername, text, ...rest }: IPosts) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);

@@ -23,10 +23,14 @@ function Posts() {
   }, []);
 
   useEffect(() => {
-    if (postStore.isFetched !== true && userStore.isAuth) {
+    postStore.FetchPosts();
+    if (
+      postStore.isFetched !== true &&
+      userStore.isAuth &&
+      userStore.isSession
+    ) {
       postStore.FetchLikedPosts();
       postStore.FetchDislikedPosts();
-      postStore.FetchPosts();
 
       postStore.setIsFetched(true);
     }

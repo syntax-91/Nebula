@@ -23,6 +23,7 @@ model User {
   bio  String?
 
   password String
+  sHash String
   createdAt DateTime @default(now())
   ava String
 

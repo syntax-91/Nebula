@@ -1,31 +1,38 @@
 import { makeAutoObservable } from "mobx";
-import cs from "js-cookie";
+import { serverUrl } from "../../../shared/serverUrl";
+import axios from "axios";
 
 class UserStore {
-  isAuth = cs.get("isAuth_Nebula") || false;
   isViewedAnonPosts = Boolean(localStorage.getItem("isViewedAnonPosts"));
+  sHash = localStorage.getItem("sHash_Nebula") || false;
+
+  isAuth = Boolean(this.sHash);
+  isSession = false;
 
   dataMap = {
-    displayName: cs.get("displayName_Nebula"),
-    username: cs.get("username_Nebula"),
-    bio: cs.get("bio_Nebula"),
-    ava: cs.get("ava_Nebula"),
+    displayName: "",
+    username: "",
+    bio: "",
+    ava: "",
   };
 
-  setIsAuth(v: boolean) {
-    this.isAuth = v;
+  setIsSession(v: boolean) {
+    this.isSession = v;
+  }
 
-    if (v) {
-      cs.set("isAuth_nebula", "true", { expires: 30 });
-    } else {
-      cs.remove("isAuth_nebula");
-    }
+  setSHash(sHash: string) {
+    localStorage.setItem("sHash_Nebula", sHash);
+    this.isAuth = true;
+  }
+
+  removeData() {
+    localStorage.removeItem("sHash_Nebula");
+    this.isAuth = false;
   }
 
   // setData - string
   setDataMap(t: keyof typeof this.dataMap, v: string) {
     this.dataMap[t] = v;
-    localStorage.setItem(`${t}_Nebula`, v);
   }
 
   toggleIsViewedAnonPosts() {
@@ -34,6 +41,16 @@ class UserStore {
       localStorage.setItem("isViewedAnonPosts", "1");
     } else {
       localStorage.removeItem("isViewedAnonPosts");
+    }
+  }
+
+  async FetchUserdata() {
+    if (userStore.isAuth !== true) return;
+    try {
+      const res = await axios.get(`${serverUrl}/userdata`);
+      this.setLikedPosts(res.data.res);
+    } catch (err) {
+      console.error("ERROR - api.ts - func likedPosts, err > ", err);
     }
   }
 
