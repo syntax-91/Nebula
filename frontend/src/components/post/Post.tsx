@@ -10,6 +10,7 @@ import { format, isThisYear } from "date-fns";
 import { ActionsPost } from "./actionsPost";
 import { MenuPost } from "./menuPost";
 import { handleToggleIsOpenMenu } from "./handlers";
+import { userStore } from "../../app/store/user/userStore";
 
 function Post({ ownerUsername, text, ...rest }: IPosts) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -104,17 +105,19 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
         {text}
       </p>
 
-      <ActionsPost
-        isLiked={isLiked}
-        likedByState={likedByState}
-        setIsLiked={setIsLiked}
-        setLikedByState={setLikedByState}
-        isDisliked={isDisliked}
-        dislikedByState={dislikedByState}
-        setIsDisliked={setIsDisliked}
-        setDislikedByState={setDislikedByState}
-        postId={rest.id}
-      />
+      {userStore.isAuth && userStore.isSession && (
+        <ActionsPost
+          isLiked={isLiked}
+          likedByState={likedByState}
+          setIsLiked={setIsLiked}
+          setLikedByState={setLikedByState}
+          isDisliked={isDisliked}
+          dislikedByState={dislikedByState}
+          setIsDisliked={setIsDisliked}
+          setDislikedByState={setDislikedByState}
+          postId={rest.id}
+        />
+      )}
     </div>
   );
 }

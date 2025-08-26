@@ -2,13 +2,14 @@ import { useEffect, useRef } from "react";
 import "./styles.scss";
 import { socket } from "../../app/socketIo";
 import type { IPosts } from "../../shared/types/types";
-import { paginationPostsAPI, postsAPI } from "./api";
+import { paginationPostsAPI } from "./api";
 import { postStore } from "../../app/store/post/postStore";
 import { observer } from "mobx-react-lite";
 import Post from "./Post";
 import { userStore } from "../../app/store/user/userStore";
 
 function Posts() {
+  // socket - new-post
   useEffect(() => {
     const handleNewPost = (data: IPosts) => {
       console.info("new-post =- socket >> ", data);
@@ -22,8 +23,8 @@ function Posts() {
     };
   }, []);
 
+  // fetch
   useEffect(() => {
-    postStore.FetchPosts();
     if (
       postStore.isFetched !== true &&
       userStore.isAuth &&
@@ -32,7 +33,12 @@ function Posts() {
       postStore.FetchLikedPosts();
       postStore.FetchDislikedPosts();
 
+      // FetchPosts - не трогать
+      postStore.FetchPosts();
+
       postStore.setIsFetched(true);
+    } else if (!userStore.isAuth) {
+      postStore.FetchPosts();
     }
   }, []);
 

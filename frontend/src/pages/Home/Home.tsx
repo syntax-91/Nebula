@@ -23,9 +23,11 @@ export default function HomePage() {
     <div className="layOut">
       <div className="Home">
         {!isM && <SideBar />}
+
         <div className="outlet">
           <Outlet />
         </div>
+
         {isM && <MenuPhone />}
         {!isM && <RightBar />}
       </div>
