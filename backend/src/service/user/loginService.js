@@ -26,7 +26,7 @@ export async function loginService(data) {
       return {
         success: true,
         msg: "добро пожаловать!",
-        sHash: res.sHash,
+        publicHash: res.publicHash,
 
         additionalData: {
           displayName: res.displayName,

@@ -1,15 +1,15 @@
 import { compare } from "bcryptjs";
 import { db } from "../db.js";
 
-export async function sessionService(sHash, password) {
+export async function sessionService(publicHash, password) {
   try {
     const res = await db.user.findFirst({
       where: {
-        sHash: sHash,
+        publicHash: publicHash,
       },
     });
 
-    if (!res?.sHash) {
+    if (!res?.publicHash) {
       console.log("пользователь не найдено");
 
       return {
