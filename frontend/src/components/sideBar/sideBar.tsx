@@ -9,6 +9,7 @@ import { userStore } from "../../app/store/user/userStore";
 import { SiAuthelia } from "react-icons/si";
 import { observer } from "mobx-react-lite";
 import { currentV } from "../../app/config/sharedConfig";
+import clsx from "clsx";
 
 function SideBar() {
   const n = useNavigate();
@@ -21,11 +22,11 @@ function SideBar() {
   return (
     <div className="sideBar ttb">
       <h3 className="cp sideBarElText currentVersionApp">{currentV}</h3>
-      <div className="menu">
+      <div className={clsx("menu", userStore.isBlockBackground && "bb")}>
         {/* Home */}
         <div onClick={() => handleNavigate("/")} className="el sideBarEl cp">
           {l.pathname == "/" ? <GoHomeFill size={30} /> : <GoHome size={30} />}
-          <p className="sideBarElText">главная</p>
+          <p className="menuElText">главная</p>
         </div>
 
         {/* Search */}
@@ -38,7 +39,7 @@ function SideBar() {
           ) : (
             <CiSearch size={30} />
           )}
-          <p className="sideBarElText">поиск</p>
+          <p className="menuElText">поиск</p>
         </div>
 
         {/* Noti */}
@@ -48,7 +49,7 @@ function SideBar() {
           ) : (
             <IoIosNotificationsOutline size={30} />
           )}
-          <p className="sideBarElText">уведомления</p>
+          <p className="menuElText">уведомления</p>
         </div>
 
         {/* Settings */}
@@ -57,14 +58,14 @@ function SideBar() {
           className="el sideBarEl cp"
         >
           <CiSettings size={30} />
-          <p className="sideBarElText">настройки</p>
+          <p className="menuElText">настройки</p>
         </div>
 
         {/* Logout */}
         {userStore.isAuth ? (
           <div onClick={() => logOutU()} className="el sideBarEl cp">
             <CiLogout size={30} />
-            <p className="sideBarElText">выйти</p>
+            <p className="menuElText">выйти</p>
           </div>
         ) : (
           ""
@@ -77,7 +78,7 @@ function SideBar() {
             className="el sideBarEl cp"
           >
             <SiAuthelia size={30} />
-            <p className="sideBarElText">вход</p>
+            <p className="menuElText">вход</p>
           </div>
         ) : (
           ""

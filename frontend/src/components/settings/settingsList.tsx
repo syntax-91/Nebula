@@ -1,6 +1,10 @@
 import "./styles.scss";
 import { CgProfile } from "react-icons/cg";
-import { MdOutlineBugReport, MdOutlinePassword } from "react-icons/md";
+import {
+  MdDashboard,
+  MdOutlineBugReport,
+  MdOutlinePassword,
+} from "react-icons/md";
 import type { ReactNode, SetStateAction } from "react";
 import { ChangePsw } from "./elements/changePsw";
 import { SettingsListEl } from "./settingsListEl";
@@ -12,6 +16,7 @@ import { BsFillPostcardFill } from "react-icons/bs";
 import MyProfile from "./elements/myProfile";
 import { FaUser, FaUserCircle } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
+import CustomUI from "./elements/customUI";
 
 interface props {
   setIsOpenSettingsBlock: (e: SetStateAction<boolean>) => void;
@@ -39,6 +44,16 @@ export default function SettingsList({ ...props }: props) {
         }
         icon={<ImProfile size={25} />}
         label="мои профиль"
+      />
+
+      <SettingsListEl
+        onClick={() =>
+          handleClickSettingsListEl({
+            settingsBlockChildren: <CustomUI />,
+          })
+        }
+        icon={<MdDashboard size={25} />}
+        label="кастомизация"
       />
 
       <SettingsListEl

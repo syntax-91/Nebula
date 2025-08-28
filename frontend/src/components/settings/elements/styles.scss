@@ -75,3 +75,16 @@
     flex-flow: column;
   }
 }
+
+// custom
+.custom {
+  * {
+    padding: 0;
+    margin: 10px 0;
+  }
+  .customEl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

@@ -1,5 +1,7 @@
 import type { ReactNode, SetStateAction } from "react";
 import "./styles.scss";
+import clsx from "clsx";
+import { userStore } from "../../app/store/user/userStore";
 
 interface props {
   labelTitle?: string;
@@ -10,7 +12,12 @@ interface props {
 export default function SettingsBlock({ ...props }: props) {
   return (
     <div className="settingsBlockMC">
-      <div className="settingsBlock anim_o0_to_o1">
+      <div
+        className={clsx(
+          "settingsBlock anim_o0_to_o1",
+          userStore.isBlockBackground ? "bb" : "bg"
+        )}
+      >
         <div className="header">
           <p className="cp back" onClick={() => props.setIsOpen(false)}>
             Назад

@@ -19,7 +19,7 @@
       .sideBarEl {
         margin: 30px 0px;
 
-        .sideBarElText {
+        .menuElText {
           display: none;
         }
       }
@@ -34,6 +34,7 @@
     }
     .menu {
       margin-top: 30px;
+      border-radius: g.$radius_sm;
 
       .sideBarEl {
         width: fit-content;

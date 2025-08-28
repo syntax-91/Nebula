@@ -6,6 +6,8 @@ import { QueryAPI } from "./api";
 import { HeaderPage } from "../../Widgets/HeaderPage/HeaderPage";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../shared/UI/Loader";
+import clsx from "clsx";
+import { userStore } from "../../app/store/user/userStore";
 
 interface IRes {
   username: string;
@@ -45,7 +47,9 @@ export default function SearchPage() {
         }
       />
 
-      <div className="resContainer">
+      <div
+        className={clsx("resContainer", userStore.isBlockBackground && "bb")}
+      >
         {/* res */}
         {res.map((e, idx) => (
           <div

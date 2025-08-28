@@ -1,5 +1,9 @@
 @use "./main.scss" as g;
 
+.bg {
+  background-color: g.$bg;
+}
+
 .block {
   transition: all 0.2s ease;
   display: flex;
@@ -89,4 +93,8 @@
   100% {
     background-color: rgb(16, 16, 16);
   }
+}
+
+.bb {
+  background-color: g.$b;
 }

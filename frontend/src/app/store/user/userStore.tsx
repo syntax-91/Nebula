@@ -4,6 +4,8 @@ import axios from "axios";
 
 class UserStore {
   isViewedAnonPosts = Boolean(localStorage.getItem("isViewedAnonPosts"));
+  isBlockBackground = Boolean(localStorage.getItem("isBlockBackground"));
+
   publicHash = localStorage.getItem("publicHash_Nebula") || false;
 
   isAuth = Boolean(this.publicHash);
@@ -41,6 +43,16 @@ class UserStore {
       localStorage.setItem("isViewedAnonPosts", "1");
     } else {
       localStorage.removeItem("isViewedAnonPosts");
+    }
+  }
+
+  toggleIsBlockBackground() {
+    this.isBlockBackground = !this.isBlockBackground;
+
+    if (this.isBlockBackground) {
+      localStorage.setItem("isBlockBackground", "1");
+    } else {
+      localStorage.removeItem("isBlockBackground");
     }
   }
 
