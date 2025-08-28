@@ -71,3 +71,22 @@
 .w_full {
   width: 100%;
 }
+
+.currentVersionApp {
+  width: fit-content;
+  padding: 0 5px;
+
+  &:hover {
+    animation: o0o1_inf 2s linear infinite;
+  }
+}
+
+@keyframes o0o1_inf {
+  50% {
+    background-color: rgb(35, 34, 34);
+  }
+
+  100% {
+    background-color: rgb(16, 16, 16);
+  }
+}

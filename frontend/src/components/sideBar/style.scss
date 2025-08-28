@@ -2,16 +2,51 @@
 
 .sideBar {
   height: 100%;
-  padding: 0px 10px;
+  padding: 0 20px;
+
+  padding-top: 20px;
 }
 
-.menu {
-  margin-top: 40px;
+@media (max-width: 1050px) {
+  .sideBar {
+    background-color: redd;
 
-  .sideBarEl {
-    width: fit-content;
+    .sideBarElText {
+      display: none;
+    }
 
-    transition: all 0.3s ease;
-    padding: 0px 15px;
+    .menu {
+      .sideBarEl {
+        margin: 30px 0px;
+
+        .sideBarElText {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1050px) {
+  .sideBar {
+    h3 {
+      padding: 0 15px;
+    }
+    .menu {
+      margin-top: 30px;
+
+      .sideBarEl {
+        width: fit-content;
+        padding: 0 15px;
+
+        transition: all 0.3s ease;
+
+        * {
+          display: flex;
+          flex-shrink: 0;
+          flex-grow: 0;
+        }
+      }
+    }
   }
 }

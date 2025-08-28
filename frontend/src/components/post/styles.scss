@@ -34,7 +34,6 @@
 /* Posts */
 
 .posts {
-  margin-top: 30px;
   margin-bottom: 70px;
   border-top: 1px solid g.$borderAccent;
   width: 100%;
@@ -47,12 +46,12 @@
 
 .Post {
   position: relative;
-  border: 1px solid rgb(17, 17, 17) /*g.$borderAccent*/;
+  border: 1px solid rgb(10, 10, 10) /*g.$borderAccent*/;
   padding: 5px;
   margin: 5px 0px;
 
   &:hover {
-    box-shadow: 0 0 20px g.$hoverColorBorder;
+    background-color: g.$b;
   }
 
   .b1 {
@@ -111,7 +110,9 @@
   }
 
   .menu {
-    background-color: g.$b;
+    box-shadow: 0 0 10px g.$accentColor;
+    background-color: g.$bg;
+
     width: fit-content;
 
     padding: 5px;
@@ -121,7 +122,7 @@
     z-index: 10;
     right: 5px;
 
-    border-radius: g.$radius;
+    border-radius: g.$radius_sm;
 
     .menuEl {
       width: fit-content;

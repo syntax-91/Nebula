@@ -10,12 +10,10 @@ export async function RegisterAPI(data: IUserdataAuth, n: NavigateFunction) {
     const res = await axios.post(`${serverUrl}/auth/register`, data);
 
     if (res.data.success) {
-      userStore.setSHash(res.data.sHash);
+      userStore.setPublicHash(res.data.publicHash);
 
-      userStore.setDataMap("username", res.data.additionalData.username);
-
-      userStore.setDataMap("displayName", res.data.additionalData.displayName);
-      userStore.setDataMap("bio", res.data.additionalData.bio);
+      userStore.setDataMap("username", data.username);
+      userStore.setDataMap("displayName", data.displayName);
 
       n("/");
     } else {

@@ -8,6 +8,7 @@ import { IoSearchCircle } from "react-icons/io5";
 import { userStore } from "../../app/store/user/userStore";
 import { SiAuthelia } from "react-icons/si";
 import { observer } from "mobx-react-lite";
+import { currentV } from "../../app/config/sharedConfig";
 
 function SideBar() {
   const n = useNavigate();
@@ -19,11 +20,12 @@ function SideBar() {
 
   return (
     <div className="sideBar ttb">
+      <h3 className="cp sideBarElText currentVersionApp">{currentV}</h3>
       <div className="menu">
         {/* Home */}
         <div onClick={() => handleNavigate("/")} className="el sideBarEl cp">
           {l.pathname == "/" ? <GoHomeFill size={30} /> : <GoHome size={30} />}
-          <p>главная</p>
+          <p className="sideBarElText">главная</p>
         </div>
 
         {/* Search */}
@@ -36,7 +38,7 @@ function SideBar() {
           ) : (
             <CiSearch size={30} />
           )}
-          <p>поиск</p>
+          <p className="sideBarElText">поиск</p>
         </div>
 
         {/* Noti */}
@@ -46,7 +48,7 @@ function SideBar() {
           ) : (
             <IoIosNotificationsOutline size={30} />
           )}
-          <p>уведомления</p>
+          <p className="sideBarElText">уведомления</p>
         </div>
 
         {/* Settings */}
@@ -55,14 +57,14 @@ function SideBar() {
           className="el sideBarEl cp"
         >
           <CiSettings size={30} />
-          <p>настройки</p>
+          <p className="sideBarElText">настройки</p>
         </div>
 
         {/* Logout */}
         {userStore.isAuth ? (
           <div onClick={() => logOutU()} className="el sideBarEl cp">
             <CiLogout size={30} />
-            <p>выйти</p>
+            <p className="sideBarElText">выйти</p>
           </div>
         ) : (
           ""
@@ -75,7 +77,7 @@ function SideBar() {
             className="el sideBarEl cp"
           >
             <SiAuthelia size={30} />
-            <p>вход</p>
+            <p className="sideBarElText">вход</p>
           </div>
         ) : (
           ""

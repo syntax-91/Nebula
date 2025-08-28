@@ -4,9 +4,9 @@ import axios from "axios";
 
 class UserStore {
   isViewedAnonPosts = Boolean(localStorage.getItem("isViewedAnonPosts"));
-  sHash = localStorage.getItem("sHash_Nebula") || false;
+  publicHash = localStorage.getItem("publicHash_Nebula") || false;
 
-  isAuth = Boolean(this.sHash);
+  isAuth = Boolean(this.publicHash);
   isSession = false;
 
   dataMap = {
@@ -20,13 +20,13 @@ class UserStore {
     this.isSession = v;
   }
 
-  setSHash(sHash: string) {
-    localStorage.setItem("sHash_Nebula", sHash);
+  setPublicHash(publicHash: string) {
+    localStorage.setItem("publicHash_Nebula", publicHash);
     this.isAuth = true;
   }
 
   removeData() {
-    localStorage.removeItem("sHash_Nebula");
+    localStorage.removeItem("publicHash_Nebula");
     this.isAuth = false;
   }
 

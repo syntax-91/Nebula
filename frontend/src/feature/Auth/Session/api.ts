@@ -11,10 +11,10 @@ interface props {
 
 export async function SessionAPI(props: props) {
   try {
-    const sHash = localStorage.getItem("sHash_Nebula");
+    const publicHash = localStorage.getItem("publicHash_Nebula");
 
     const res = await axios.post(
-      `${serverUrl}/auth/session/${sHash}/${props.password}`
+      `${serverUrl}/auth/session/${publicHash}/${props.password}`
     );
 
     console.info(res.data);

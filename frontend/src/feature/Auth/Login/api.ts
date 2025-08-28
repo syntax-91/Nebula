@@ -16,8 +16,10 @@ export async function LoginAPI(
 
     setIsLoading(false);
 
+    console.info("loginAPI - publicHash >> ", res.data);
+
     if (res.data.success) {
-      userStore.setSHash(res.data.sHash);
+      userStore.setPublicHash(res.data.publicHash);
 
       userStore.setDataMap("username", res.data.additionalData.username);
 

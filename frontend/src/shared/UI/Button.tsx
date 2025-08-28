@@ -1,4 +1,5 @@
 import type { Ref } from "react";
+import "./Styles.scss";
 
 interface props {
   label?: string;
