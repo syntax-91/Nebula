@@ -1,7 +1,7 @@
 @use "../../shared/style/main.scss" as g;
 
 .settingsList {
-  width: 700px;
+  width: 500px;
 
   margin: auto;
   margin-top: 30px;
@@ -14,22 +14,18 @@
 }
 
 .settingsListEl {
-  border: 1px solid g.$borderPrimary;
-
-  width: fit-content;
-  padding: 2px 20px;
+  width: 100%;
+  padding: 0px 15px;
 
   margin-top: 3px;
 
-  border-radius: g.$radius_md;
+  border-radius: g.$radius_sm;
 
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 
   .elIcon {
-    width: 30px;
-    height: 30px;
     border-radius: 10px;
 
     display: flex;

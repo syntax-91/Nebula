@@ -17,6 +17,7 @@ import MyProfile from "./elements/myProfile";
 import { FaUser, FaUserCircle } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import CustomUI from "./elements/customUI";
+import { userStore } from "../../app/store/user/userStore";
 
 interface props {
   setIsOpenSettingsBlock: (e: SetStateAction<boolean>) => void;
@@ -36,15 +37,17 @@ export default function SettingsList({ ...props }: props) {
 
   return (
     <div className="settingsList">
-      <SettingsListEl
-        onClick={() =>
-          handleClickSettingsListEl({
-            settingsBlockChildren: <MyProfile />,
-          })
-        }
-        icon={<ImProfile size={25} />}
-        label="мои профиль"
-      />
+      {userStore.isAuth && (
+        <SettingsListEl
+          onClick={() =>
+            handleClickSettingsListEl({
+              settingsBlockChildren: <MyProfile />,
+            })
+          }
+          icon={<ImProfile size={20} />}
+          label="мои профиль"
+        />
+      )}
 
       <SettingsListEl
         onClick={() =>
@@ -52,7 +55,7 @@ export default function SettingsList({ ...props }: props) {
             settingsBlockChildren: <CustomUI />,
           })
         }
-        icon={<MdDashboard size={25} />}
+        icon={<MdDashboard size={20} />}
         label="кастомизация"
       />
 
@@ -62,29 +65,33 @@ export default function SettingsList({ ...props }: props) {
             settingsBlockChildren: <About />,
           })
         }
-        icon={<FcAbout size={30} />}
+        icon={<FcAbout size={20} />}
         label="о проекте"
       />
 
-      <SettingsListEl
-        onClick={() =>
-          handleClickSettingsListEl({
-            settingsBlockChildren: <ChangePsw />,
-          })
-        }
-        label="сменить пароль"
-        icon={<MdOutlinePassword size={30} />}
-      />
+      {userStore.isAuth && (
+        <SettingsListEl
+          onClick={() =>
+            handleClickSettingsListEl({
+              settingsBlockChildren: <ChangePsw />,
+            })
+          }
+          label="сменить пароль"
+          icon={<MdOutlinePassword size={20} />}
+        />
+      )}
 
-      <SettingsListEl
-        onClick={() =>
-          handleClickSettingsListEl({
-            settingsBlockChildren: <ReportABug />,
-          })
-        }
-        label="сообщить о баге"
-        icon={<MdOutlineBugReport size={30} />}
-      />
+      {userStore.isAuth && (
+        <SettingsListEl
+          onClick={() =>
+            handleClickSettingsListEl({
+              settingsBlockChildren: <ReportABug />,
+            })
+          }
+          label="сообщить о баге"
+          icon={<MdOutlineBugReport size={20} />}
+        />
+      )}
 
       <SettingsListEl
         onClick={() =>
@@ -93,7 +100,7 @@ export default function SettingsList({ ...props }: props) {
           })
         }
         label="посты"
-        icon={<BsFillPostcardFill size={30} />}
+        icon={<BsFillPostcardFill size={20} />}
       />
     </div>
   );
