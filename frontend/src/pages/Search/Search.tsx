@@ -5,7 +5,6 @@ import { useDebounce } from "../../shared/utils/hooks/useDebounce";
 import { QueryAPI } from "./api";
 import { HeaderPage } from "../../Widgets/HeaderPage/HeaderPage";
 import { useNavigate } from "react-router-dom";
-import { Loader } from "../../shared/UI/Loader";
 import clsx from "clsx";
 import { userStore } from "../../app/store/user/userStore";
 
