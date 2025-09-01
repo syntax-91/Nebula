@@ -6,9 +6,9 @@ class UserStore {
   isViewedAnonPosts = Boolean(localStorage.getItem("isViewedAnonPosts"));
   isBlockBackground = Boolean(localStorage.getItem("isBlockBackground"));
 
-  publicHash = localStorage.getItem("publicHash_Nebula") || false;
+  privateHash = localStorage.getItem("privateHash_Nebula") || false;
 
-  isAuth = Boolean(this.publicHash);
+  isAuth = Boolean(this.privateHash);
   isSession = false;
 
   dataMap = {
@@ -22,13 +22,13 @@ class UserStore {
     this.isSession = v;
   }
 
-  setPublicHash(publicHash: string) {
-    localStorage.setItem("publicHash_Nebula", publicHash);
+  setPrivateHash(privateHash: string) {
+    localStorage.setItem("privateHash_Nebula", privateHash);
     this.isAuth = true;
   }
 
   removeData() {
-    localStorage.removeItem("publicHash_Nebula");
+    localStorage.removeItem("privateHash_Nebula");
     this.isAuth = false;
   }
 
@@ -56,13 +56,23 @@ class UserStore {
     }
   }
 
-  async FetchUserdata() {
-    if (userStore.isAuth !== true) return;
+  async FetchSession() {
+    if (this.isAuth !== true && this.isSession !== true) return;
     try {
-      const res = await axios.get(`${serverUrl}/userdata`);
-      this.setLikedPosts(res.data.res);
+      const res = await axios.post(
+        `${serverUrl}/auth/session/${this.privateHash}`
+      );
+      if (res.data.success) {
+        console.info("f > ", res.data);
+
+        this.setDataMap("displayName", res.data.additionalData.displayName);
+        this.setDataMap("username", res.data.additionalData.username);
+        this.setDataMap("bio", res.data.additionalData.bio);
+        //
+        //this.setDataMap("ava", res.data.ava)
+      }
     } catch (err) {
-      console.error("ERROR - api.ts - func likedPosts, err > ", err);
+      console.error("ERROR - async func Session - userStore, err > ", err);
     }
   }
 

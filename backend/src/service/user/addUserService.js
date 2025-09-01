@@ -14,14 +14,14 @@ export async function addUserService(data) {
       return {
         success: false,
         msg: "уже существует..",
-        publicHash: "*",
+        privateHash: "*",
       };
     }
 
     const PSW_HASH = await hash(data.password, 12);
     const rand_UUID = v4();
 
-    const publicHash = await hash(rand_UUID, 12);
+    const privateHash = await hash(rand_UUID, 12);
 
     await db.user.create({
       data: {
@@ -29,13 +29,13 @@ export async function addUserService(data) {
         username: data.username,
         password: PSW_HASH,
         ava: "",
-        publicHash: publicHash,
+        privateHash: privateHash,
       },
     });
 
     return {
       success: true,
-      publicHash: publicHash,
+      privateHash: privateHash,
       msg: "успешно",
     };
   } catch (err) {

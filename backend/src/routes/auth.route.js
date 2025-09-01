@@ -15,7 +15,7 @@ AuthRouter.post("/login", async (req, res) => {
     res.json({
       success: e.success,
       msg: e.msg,
-      publicHash: e.publicHash,
+      privateHash: e.privateHash,
 
       additionalData: e.additionalData,
     });
@@ -32,7 +32,7 @@ AuthRouter.post("/register", async (req, res) => {
     res.json({
       success: e.success,
       msg: e.msg,
-      publicHash: e.publicHash,
+      privateHash: e.privateHash,
 
       additionalData: e.additionalData,
     });
@@ -40,12 +40,12 @@ AuthRouter.post("/register", async (req, res) => {
 });
 
 // auth/session
-AuthRouter.post("/session/:publicHash/:password", async (req, res) => {
-  const { publicHash, password } = req.params;
+AuthRouter.post("/session/:privateHash", async (req, res) => {
+  const { privateHash } = req.params;
 
-  console.log("запрос на auth/session, data >>  ", publicHash, password);
+  console.log("запрос на session");
 
-  sessionService(publicHash, password).then((e) => {
+  sessionService(privateHash).then((e) => {
     res.json({
       success: e.success,
       msg: e.msg,

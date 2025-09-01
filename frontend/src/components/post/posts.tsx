@@ -25,19 +25,7 @@ function Posts() {
 
   // fetch
   useEffect(() => {
-    if (
-      postStore.isFetched !== true &&
-      userStore.isAuth &&
-      userStore.isSession
-    ) {
-      postStore.FetchLikedPosts();
-      postStore.FetchDislikedPosts();
-
-      // FetchPosts - не трогать
-      postStore.FetchPosts();
-
-      postStore.setIsFetched(true);
-    } else if (!userStore.isAuth) {
+    if (postStore.isFetched !== true) {
       postStore.FetchPosts();
     }
   }, []);

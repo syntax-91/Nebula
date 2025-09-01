@@ -1,15 +1,15 @@
 import { compare } from "bcryptjs";
 import { db } from "../db.js";
 
-export async function sessionService(publicHash, password) {
+export async function sessionService(privateHash) {
   try {
     const res = await db.user.findFirst({
       where: {
-        publicHash: publicHash,
+        privateHash: privateHash,
       },
     });
 
-    if (!res?.publicHash) {
+    if (!res?.privateHash) {
       console.log("пользователь не найдено");
 
       return {
@@ -18,28 +18,16 @@ export async function sessionService(publicHash, password) {
         additionalData: "",
       };
     }
-
-    const isValidPSW = await compare(password, res.password);
-
-    if (isValidPSW) {
-      console.log("добро пожаловать!");
-
-      return {
-        success: true,
-        msg: "добро пожаловать!",
-
-        additionalData: {
-          displayName: res.displayName,
-          username: res.username,
-          bio: res.bio,
-        },
-      };
-    }
-
+    //const isValidPSW = await compare(password, res.password);
     return {
-      success: false,
-      msg: "неправильные данные",
-      additionalData: "",
+      success: true,
+      msg: "добро пожаловать!",
+
+      additionalData: {
+        displayName: res.displayName,
+        username: res.username,
+        bio: res.bio,
+      },
     };
   } catch (err) {
     console.log("ERROR - sessionService - func loginService >> ", err);

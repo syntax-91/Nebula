@@ -60,6 +60,10 @@ class PostStoreClass {
 
   async FetchPosts() {
     try {
+      if (userStore.isAuth && userStore.isSession) {
+        this.FetchLikedPosts();
+        this.FetchDislikedPosts();
+      }
       const res = await axios.get(`${serverUrl}/post/lastPosts`);
 
       const lastPost = (this.lastPostId = res.data.posts.at(-1));
@@ -72,26 +76,24 @@ class PostStoreClass {
   }
 
   async FetchLikedPosts() {
-    if (userStore.isAuth !== true) return;
     try {
       const res = await axios.get(
         `${serverUrl}/post/likedPosts/${userStore.dataMap.username}`
       );
       this.setLikedPosts(res.data.res);
     } catch (err) {
-      console.error("ERROR - api.ts - func likedPosts, err > ", err);
+      console.error("ERROR - func FetchLikedPosts, err > ", err);
     }
   }
 
   async FetchDislikedPosts() {
-    if (userStore.isAuth !== true) return;
     try {
       const res = await axios.get(
         `${serverUrl}/post/dislikedPosts/${userStore.dataMap.username}`
       );
       this.setDislikedPosts(res.data.res);
     } catch (err) {
-      console.error("ERROR - api.ts - func likedPosts, err > ", err);
+      console.error("ERROR - func FetchDislikedPosts, err > ", err);
     }
   }
 

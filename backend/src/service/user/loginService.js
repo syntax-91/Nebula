@@ -21,12 +21,10 @@ export async function loginService(data) {
     const isValidPSW = await compare(data.password, res.password);
 
     if (isValidPSW) {
-      console.log("добро пожаловать!");
-
       return {
         success: true,
         msg: "добро пожаловать!",
-        publicHash: res.publicHash,
+        privateHash: res.privateHash,
 
         additionalData: {
           displayName: res.displayName,

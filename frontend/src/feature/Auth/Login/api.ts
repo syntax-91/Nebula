@@ -16,10 +16,12 @@ export async function LoginAPI(
 
     setIsLoading(false);
 
-    console.info("loginAPI - publicHash >> ", res.data);
+    console.info("loginAPI - privateHash >> ", res.data);
 
     if (res.data.success) {
-      userStore.setPublicHash(res.data.publicHash);
+      userStore.setIsSession(true);
+
+      userStore.setPrivateHash(res.data.privateHash);
 
       userStore.setDataMap("username", res.data.additionalData.username);
 

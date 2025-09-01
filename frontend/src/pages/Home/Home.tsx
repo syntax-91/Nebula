@@ -1,21 +1,20 @@
 import { RightBar } from "../../components/rightBar/rightBar";
 import SideBar from "../../components/sideBar/sideBar";
 import "./style.scss";
-import { userStore } from "../../app/store/user/userStore";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Modal } from "../../components/modal/modal";
 import { modalStore } from "../../app/store/modalStore";
 import { useMediaQuery } from "react-responsive";
 import MenuPhone from "../../components/menuPhone/menuPhone";
 import { useEffect } from "react";
+import { userStore } from "../../app/store/user/userStore";
 
 export default function HomePage() {
   const isM = useMediaQuery({ maxWidth: 750 });
-  const n = useNavigate();
 
   useEffect(() => {
-    if (userStore.isSession !== true && userStore.isAuth == true) {
-      n("/session");
+    if (userStore.isAuth && userStore.isSession !== true) {
+      userStore.FetchSession();
     }
   }, []);
 

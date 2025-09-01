@@ -10,7 +10,7 @@ export async function RegisterAPI(data: IUserdataAuth, n: NavigateFunction) {
     const res = await axios.post(`${serverUrl}/auth/register`, data);
 
     if (res.data.success) {
-      userStore.setPublicHash(res.data.publicHash);
+      userStore.setPrivateHash(res.data.privateHash);
 
       userStore.setDataMap("username", data.username);
       userStore.setDataMap("displayName", data.displayName);
