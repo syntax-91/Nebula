@@ -34,7 +34,6 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
     const isLikedPost = postStore.likedPosts.some(
       (post) => post.postId === rest.id
     );
-    console.log(isLiked);
     setIsLiked(isLikedPost);
 
     const isDislikedPost = postStore.dislikedPosts.some(
@@ -46,7 +45,6 @@ function Post({ ownerUsername, text, ...rest }: IPosts) {
   // pagination
   useEffect(() => {
     if (inView && rest.id === rest.lastPostId) {
-      console.log("Post.tsx 56");
       rest.paginationFunc();
     }
   }, [inView]);
