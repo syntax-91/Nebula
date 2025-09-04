@@ -1,5 +1,5 @@
-import { RightBar } from "../../components/rightBar/rightBar";
-import SideBar from "../../components/sideBar/sideBar";
+import { RightBar } from "../../Widgets/rightBar/rightBar";
+import SideBar from "../../Widgets/sideBar/sideBar";
 import "./style.scss";
 import { Outlet } from "react-router-dom";
 import { Modal } from "../../components/modal/modal";

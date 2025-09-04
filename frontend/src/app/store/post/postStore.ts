@@ -3,7 +3,7 @@ import type { IPosts } from "../../../shared/types/types";
 import axios from "axios";
 import { userStore } from "../user/userStore";
 import { serverUrl } from "../../../shared/serverUrl";
-import { postsAPI } from "../../../components/post/api";
+import { postsAPI } from "../../../feature/post/api";
 
 interface ILikedPosts {
   postId: number;
