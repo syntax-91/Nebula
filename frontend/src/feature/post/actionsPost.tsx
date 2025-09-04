@@ -57,7 +57,9 @@ export function ActionsPost({ ...props }: props) {
           />
         )}
 
-        <div className="likedByCount">{props.likedByState}</div>
+        <div className="likedByCount">
+          {props.likedByState > 0 && props.likedByState}
+        </div>
       </div>
 
       {/* dislike */}
@@ -91,7 +93,9 @@ export function ActionsPost({ ...props }: props) {
           />
         )}
 
-        <div className="dislikedByCount">{props.dislikedByState}</div>
+        <div className="dislikedByCount">
+          {props.dislikedByState > 0 && props.dislikedByState}
+        </div>
       </div>
     </div>
   );
