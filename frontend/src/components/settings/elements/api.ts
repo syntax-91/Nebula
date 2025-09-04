@@ -11,10 +11,8 @@ interface IChangePsw {
 export async function changePswAPI({ ...props }: IChangePsw) {
   try {
     const res = await axios.post(
-      `${serverUrl}/user/changePsw/${props.username}/${props.oldPsw}/${props.newPsw}`
+      `${serverUrl}/user/changePsw/${userStore.privateHash}/${props.oldPsw}/${props.newPsw}`
     );
-
-    console.log("changePsw res >> ", res.data);
 
     return {
       success: res.data.success,
@@ -36,8 +34,6 @@ export async function reportABugAPI({ ...props }: IReportABug) {
       `${serverUrl}/spread/reportABug/${props.username}/${props.text}`
     );
 
-    console.log("report a bug res >> ", res.data);
-
     return {
       success: res.data.success,
       msg: res.data.msg,
@@ -56,11 +52,8 @@ interface IChange {
 export async function changeDisplayNameAPI({ ...props }: IChange) {
   try {
     const res = await axios.post(
-      `${serverUrl}/user/changeDisplayName/${props.username}/${props.text}`
+      `${serverUrl}/user/changeDisplayName/${userStore.privateHash}/${props.text}`
     );
-
-    console.log("changeDisplayName >> ", res.data);
-    userStore.setDataMap("displayName", props.text);
 
     return {
       success: res.data.success,
@@ -74,7 +67,7 @@ export async function changeDisplayNameAPI({ ...props }: IChange) {
 export async function changeUsernameAPI({ ...props }: IChange) {
   try {
     const res = await axios.post(
-      `${serverUrl}/user/changeUsername/${props.username}/${props.text}`
+      `${serverUrl}/user/changeUsername/${userStore.privateHash}/${props.text}`
     );
 
     if (res.data.success) {
@@ -93,11 +86,8 @@ export async function changeUsernameAPI({ ...props }: IChange) {
 export async function changeBioAPI({ ...props }: IChange) {
   try {
     const res = await axios.post(
-      `${serverUrl}/user/changeBio/${props.username}/${props.text}`
+      `${serverUrl}/user/changeBio/${userStore.privateHash}/${props.text}`
     );
-
-    console.log("changeBio >> ", res.data);
-    userStore.setDataMap("bio", props.text);
 
     return {
       success: res.data.success,
@@ -119,7 +109,7 @@ export async function changeAvaAPI({ ...props }: IChangeAva) {
     formData.append("file", props.file);
 
     const res = await axios.post(
-      `${serverUrl}/user/changeAva/${props.username}`,
+      `${serverUrl}/user/changeAva/${userStore.privateHash}`,
       formData,
       {
         headers: {

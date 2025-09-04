@@ -59,12 +59,15 @@ class UserStore {
   async FetchSession() {
     if (this.isAuth !== true && this.isSession !== true) return;
     try {
+      console.info(
+        "userStore - FetchSession - privateHash > ",
+        this.privateHash
+      );
+
       const res = await axios.post(
         `${serverUrl}/auth/session/${this.privateHash}`
       );
       if (res.data.success) {
-        console.info("f > ", res.data);
-
         this.setDataMap("displayName", res.data.additionalData.displayName);
         this.setDataMap("username", res.data.additionalData.username);
         this.setDataMap("bio", res.data.additionalData.bio);

@@ -25,11 +25,11 @@ UserRouter.get("/data/:username", (req, res) => {
 });
 
 // user/changePsw
-UserRouter.post("/changePsw/:username/:oldPsw/:newPsw", (req, res) => {
-  const { username, oldPsw, newPsw } = req.params;
+UserRouter.post("/changePsw/:privateHash/:oldPsw/:newPsw", (req, res) => {
+  const { privateHash, oldPsw, newPsw } = req.params;
   console.log("запрос на changePsw");
 
-  changePswService(username, oldPsw, newPsw).then((e) => {
+  changePswService(privateHash, oldPsw, newPsw).then((e) => {
     res.json({
       success: e.success,
       msg: e.msg,
@@ -38,11 +38,11 @@ UserRouter.post("/changePsw/:username/:oldPsw/:newPsw", (req, res) => {
 });
 
 // user/changeDisplayName
-UserRouter.post("/changeDisplayName/:username/:displayName", (req, res) => {
-  const { username, displayName } = req.params;
+UserRouter.post("/changeDisplayName/:privateHash/:displayName", (req, res) => {
+  const { privateHash, displayName } = req.params;
   console.log("запрос на changePsw");
 
-  changeDisplayNameService(username, displayName).then((e) => {
+  changeDisplayNameService(privateHash, displayName).then((e) => {
     res.json({
       success: e.success,
       msg: e.msg,
@@ -51,11 +51,11 @@ UserRouter.post("/changeDisplayName/:username/:displayName", (req, res) => {
 });
 
 // user/changeUsername
-UserRouter.post("/changeUsername/:username/:newUsername", (req, res) => {
-  const { username, newUsername } = req.params;
+UserRouter.post("/changeUsername/:privateHash/:newUsername", (req, res) => {
+  const { privateHash, newUsername } = req.params;
   console.log("запрос на changeUsername");
 
-  changeUsernameService(username, newUsername).then((e) => {
+  changeUsernameService(privateHash, newUsername).then((e) => {
     res.json({
       success: e.success,
       msg: e.msg,
@@ -64,11 +64,11 @@ UserRouter.post("/changeUsername/:username/:newUsername", (req, res) => {
 });
 
 // user/changeBio
-UserRouter.post("/changeBio/:username/:newBio", (req, res) => {
-  const { username, newBio } = req.params;
+UserRouter.post("/changeBio/:privateHash/:newBio", (req, res) => {
+  const { privateHash, newBio } = req.params;
   console.log("запрос на changeBio");
 
-  changeBioService(username, newBio).then((e) => {
+  changeBioService(privateHash, newBio).then((e) => {
     res.json({
       success: e.success,
       msg: e.msg,
@@ -77,14 +77,14 @@ UserRouter.post("/changeBio/:username/:newBio", (req, res) => {
 });
 
 // user/changeAva
-UserRouter.post("/changeAva/:username", async (req, res) => {
+UserRouter.post("/changeAva/:privateHash", async (req, res) => {
   const { username } = req.params;
   const file = req.body;
   let url = await UploadToImgService(file.path);
 
   console.log("запрос на changeAva");
 
-  changeAvaService(username, url).then((e) => {
+  changeAvaService(privateHash, url).then((e) => {
     res.json({
       //
       success: e.success,

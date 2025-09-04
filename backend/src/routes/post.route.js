@@ -77,12 +77,12 @@ PostRouter.post("/dislike", (req, res) => {
 });
 
 // post/likedPosts
-PostRouter.get("/likedPosts/:username", (req, res) => {
-  const { username } = req.params;
+PostRouter.get("/likedPosts/:privateHash", (req, res) => {
+  const { privateHash } = req.params;
 
-  console.log("запрос на post/likedPosts - data >> ", username);
+  console.log("запрос на post/likedPosts - data >> ", privateHash);
 
-  likedPostsService(username).then((posts) => {
+  likedPostsService(privateHash).then((posts) => {
     res.json({
       success: posts.success,
       msg: posts.msg,
@@ -92,12 +92,12 @@ PostRouter.get("/likedPosts/:username", (req, res) => {
 });
 
 // post/dislikedPosts
-PostRouter.get("/dislikedPosts/:username", (req, res) => {
-  const { username } = req.params;
+PostRouter.get("/dislikedPosts/:privateHash", (req, res) => {
+  const { privateHash } = req.params;
 
-  console.log("запрос на post/likedPosts - data >> ", username);
+  console.log("запрос на post/likedPosts - data >> ", privateHash);
 
-  dislikedPostsService(username).then((posts) => {
+  dislikedPostsService(privateHash).then((posts) => {
     res.json({
       success: posts.success,
       msg: posts.msg,

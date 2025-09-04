@@ -1,10 +1,10 @@
 import { db } from "../db.js";
 import { compare, hash } from "bcryptjs";
 
-export async function changePswService(username, oldPsw, newPsw) {
+export async function changePswService(privateHash, oldPsw, newPsw) {
   try {
     const res = await db.user.findFirst({
-      where: { username: username },
+      where: { privateHash: privateHash },
       select: { password: true },
     });
 
@@ -14,7 +14,7 @@ export async function changePswService(username, oldPsw, newPsw) {
       const newPswHash = await hash(newPsw, 12);
 
       await db.user.update({
-        where: { username: username },
+        where: { privateHash: privateHash },
         data: { password: newPswHash },
       });
 
@@ -35,10 +35,10 @@ export async function changePswService(username, oldPsw, newPsw) {
 
 // changeDisplayName
 
-export async function changeDisplayNameService(username, newDisplayName) {
+export async function changeDisplayNameService(privateHash, newDisplayName) {
   try {
     const res = await db.user.update({
-      where: { username: username },
+      where: { privateHash: privateHash },
       data: { displayName: newDisplayName },
     });
 
@@ -53,7 +53,7 @@ export async function changeDisplayNameService(username, newDisplayName) {
 
 // changeUsername
 
-export async function changeUsernameService(username, newUsername) {
+export async function changeUsernameService(privateHash, newUsername) {
   try {
     const res = await db.user.findFirst({
       where: { username: newUsername },
@@ -67,16 +67,21 @@ export async function changeUsernameService(username, newUsername) {
       };
     }
 
-    const update = await db.user.update({
-      where: { username: username },
+    const resUpdate = await db.user.update({
+      where: { privateHash: privateHash },
       data: { username: newUsername },
     });
 
-    console.log("newUsername", newUsername, update.username);
+    if (resUpdate != true) {
+      return {
+        success: false,
+        msg: "не удалось обновить :)",
+      };
+    }
 
     return {
       success: true,
-      msg: "йес успешно, нах :)",
+      msg: "йес успешно :)",
     };
   } catch (err) {
     console.log(`changeService - username >> ${err}}`);
@@ -86,10 +91,10 @@ export async function changeUsernameService(username, newUsername) {
 
 // changeBio
 
-export async function changeBioService(username, newBio) {
+export async function changeBioService(privateHash, newBio) {
   try {
     await db.user.update({
-      where: { username: username },
+      where: { privateHash: privateHash },
       data: { bio: newBio },
     });
 
@@ -105,14 +110,22 @@ export async function changeBioService(username, newBio) {
 
 // changeAva
 
-export async function changeAvaService(username, url) {
+export async function changeAvaService(privateHash, url) {
   try {
     const res = await db.user.update({
-      where: { username: username },
+      where: { privateHash: privateHash },
       data: { ava: url },
     });
 
     console.log("changeAvaService");
+
+    if (res != true) {
+      return {
+        success: false,
+        msg: "эхх, что-то пошло не так(",
+        url: "*",
+      };
+    }
 
     return {
       success: true,
